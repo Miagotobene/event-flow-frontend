@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 import searchIconLight from '../../assets/images/search-w.png';
 import searchIconDark from '../../assets/images/search-b.png';
@@ -16,17 +17,14 @@ const Navbar = ({theme, setTheme}) => {
     }
   return (
     <div className='navbar'>
-        <img   alt="" className='logo'/>
+        <img  alt="" className='logo'/>
         <ul>
-            <a href="/home"><li>Home</li></a>
-            <a href="/about"><li>About</li></a>
-            <a href="/sign up"><li>Sign Up</li></a>
-            <a href="/login"><li>Log In</li></a>
+            <li><Link>Home</Link></li>
+            <li><Link>About</Link></li>
+            <li><Link>Sign Up</Link></li>
+            <li><Link>Log In</Link></li>
         </ul>
-        <main>
-            <p></p>
-        </main>
-
+        
         <div className='search-box'>
             <input type="text" placeholder='Search'/>
             <img src={theme == 'light' ? searchIconLight : searchIconDark } alt="" />
@@ -39,4 +37,11 @@ const Navbar = ({theme, setTheme}) => {
 
 // src={theme == 'light' ? logo_light : logo_dark}
 
-export default Navbar
+export default Navbar;
+
+
+
+            {/* <a href="/home"><li>Home</li></a>
+            <a href="/about"><li>About</li></a>
+            <a href="/sign up"><li>Sign Up</li></a>
+            <a href="/login"><li>Log In</li></a> */}
