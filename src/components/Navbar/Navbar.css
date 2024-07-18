@@ -1,28 +1,77 @@
+.active{
+    background-color:#689c2f ;
+}
+
 .navbar{
-    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     background-color: #658147;
-    padding: 15px 7%;
-    transition: 0.5s;
+    color: #fff;
+    position: sticky;
+    top: 0;
 
 }
 
-ul{
-    flex:1;
+.navbar .title { 
+    font-size: 1.7rem;
+    margin: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Playwrite+CL';
+    color: #fff;
+}
+
+
+.navbar ul{
+    display: flex;
+    /* text-align: center;
+    text-decoration: none; */
+}
+
+.navbar ul li{
     list-style: none;
-    text-align: center;
-}
-
-ul, li{
-    display: inline-block;
+    /* display: inline-block;
     margin: 10px 20px;
     font-size: 24px;
-    cursor: pointer;
+    cursor: pointer; */
+   
     /* color: #ffff; */
 }
-.toggle-icon {
+
+.navbar ul li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.navbar ul li a:not(.active):hover{
+    background-color: #6faf2b;
+}
+
+.navbar .menu {
+    display: none;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.54\rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+}
+
+.navbar .menu span{
+    height: 0.4rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.2rem;
+}
+
+
+ /* .toggle-icon {
     width: 50px;
     cursor: pointer;
     margin-left: 40px
@@ -71,5 +120,36 @@ ul, li{
 .dark .search-box input::placeholder{
     background-color: #fff;
     color: rgb(79, 79, 79);
+} */
+/* a { color: inherit }  */ 
+
+@media (max-width: 480px) {
+    nav .menu {
+        display: flex;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        margin: 0.2rem 0.5rem;
+    }
 }
-/* a { color: inherit }  */
