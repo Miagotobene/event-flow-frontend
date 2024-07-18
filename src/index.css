@@ -20,3 +20,33 @@
 .container.light{
   background-color: #E7F0DC;
 }
+
+
+.cta{
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.cta__container{
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+
+}
+
+.cta__image{
+  width: 20%;
+}
+
+.cta__content{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.cta__container p{
+  width: 50%;
+}
+.cta__container button{
+  width: 20%;
+}
