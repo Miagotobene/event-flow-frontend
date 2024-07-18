@@ -1,0 +1,75 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #658147;
+    padding: 15px 7%;
+    transition: 0.5s;
+
+}
+
+ul{
+    flex:1;
+    list-style: none;
+    text-align: center;
+}
+
+ul, li{
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    /* color: #ffff; */
+}
+.toggle-icon {
+    width: 50px;
+    cursor: pointer;
+    margin-left: 40px
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #242424;
+    padding: 10px 20px;
+    border-radius: 50px;
+}
+
+.search-box input{
+    padding: 6px;
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    font-size: 18px; 
+    max-width: 200px;
+}
+
+.search-box input::placeholder{
+    color: #fff;
+}
+
+.search-box img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.dark .navbar{
+    background-color: #E7F0DC;
+    color: rgb(79, 79, 79);
+}
+
+.dark .search-box{
+    background: #fff;
+}
+
+.dark .search-box input{
+    color: rgb(79, 79, 79);
+}
+
+.dark .search-box input::placeholder{
+    background-color: #fff;
+    color: rgb(79, 79, 79);
+}
+a { color: inherit } 
