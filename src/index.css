@@ -66,7 +66,7 @@ body {
 .signup {
   /* background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%); */
   width: 100%;
-  /* padding: 60px 0 40px 0; */
+  padding: 60px 0 40px 0;
 }
 .signup img {
   width: 62%;
@@ -102,7 +102,16 @@ body {
   font-size: 16px;
   font-weight: 400;
   color: #9a1750;
+  /* color: #121212; */
 }
+
+.dark .signup form input::placeholder, .signup form textarea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  /* color: #9a1750; */
+  color: #e3e2df;
+}
+
 .signup form input:focus::placeholder, .signup form textarea:focus::placeholder {
   color: #121212;
   opacity: 0.8;
