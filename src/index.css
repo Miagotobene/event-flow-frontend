@@ -5,48 +5,34 @@
   font-family: 'Lato', 'Arial', 'Helvetica';
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  font-weight: 400;
+  overflow-x: hidden;
+  position: relative;
+}
+
 .container{
   width: 100vw;
   min-height: 100vh;
-  background-color: #E7F0DC;
-  color: #fff;
+  /* background: #e3e2df; */
+  /* color: #9a1750; */
   transition: 0.5s;
 }
 
+
 .container.dark{
-  background-color: #658147;
+  background: #6f0835;
+  color: #e3e2df;
 }
 
-.container.light{
-  background-color: #E7F0DC;
-}
+ .container.light{
+  background-color: #e3e2df;
+  color: #9a1750;
+ } 
 
 
-.cta{
-  display: flex;
-  justify-content: center;
-  color: black;
-}
-
-.cta__container{
-  display: flex;
-  flex-direction: row;
-  padding: 1em;
-
-}
-
-.cta__image{
-  width: 20%;
-}
-
-.cta__content{
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-}
-.cta__container p{
-  width: 50%;
-}
-.cta__container button{
-  width: 20%;
-}
