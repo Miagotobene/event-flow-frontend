@@ -69,7 +69,7 @@ const SignUp = () => {
 
 
   return (
-    <section className='singup' id='signup'>
+    <section className='signup' id='signup'>
       <Container>
         <Row className='align-items-center'>
           <Col md={6} >
@@ -80,19 +80,15 @@ const SignUp = () => {
           <form action="" onSubmit={handleSubmit}>
             <Row>
               <Col sm={6} className='px-1'>
-              <label htmlFor="singup">First Name: </label>
                 <input type="text" value={formDetails.firstName} placeholder='First Name' onChange={(event) => onFormUpdate('firstName', event.target.value) }/>
               </Col>
               <Col sm={6} className='px-1'>
-              <label htmlFor="singup">Last Name: </label>
                 <input type="text" value={formDetails.lastName} placeholder='Last Name' onChange={(event) => onFormUpdate('lastName', event.target.value) }/>
               </Col>
               <Col sm={6} className='px-1'>
-              <label htmlFor="singup">Email Address: </label>
                 <input type="email" value={formDetails.email} placeholder='Email Address' onChange={(event) => onFormUpdate('email', event.target.value) }/>
               </Col>
               <Col sm={6} className='px-1'>
-                <label htmlFor="singup">Phone Number: </label>
                 <input type="tel" value={formDetails.phone} placeholder='Phone Number' onChange={(event) => onFormUpdate('phone', event.target.value) }/>
               </Col>
               {
@@ -101,16 +97,14 @@ const SignUp = () => {
                 <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
                 </Col>
               }
-              <label htmlFor="country">Country: </label>
-              <CountrySelect
+              <CountrySelect className='country'
                     onChange={(e) => {
                       setCountryid(e.id);
                       onFormUpdate('country', e.target.value)
                     }}
                     placeHolder="Select Country"
                   />
-                <label htmlFor="state">State: </label>
-                  <StateSelect
+                  <StateSelect className='state'
                     countryid={countryid}
                     onChange={(e) => {
                       setStateid(e.id);

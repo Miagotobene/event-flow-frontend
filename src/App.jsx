@@ -6,6 +6,7 @@ import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
+import Footer from './components/Pages/Footer';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/login' element={<Login />}></Route>
       </Routes>
+      <Footer />
 
     </div>
   )
