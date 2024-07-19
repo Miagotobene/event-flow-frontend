@@ -8,7 +8,6 @@ import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
 
 
-
 const App = () => {
 
   const [theme, setTheme] = useState('light')
@@ -21,8 +20,6 @@ const App = () => {
         <Route path='/about' element={<About />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='/login' element={<Login />}></Route>
-
-
       </Routes>
 
     </div>

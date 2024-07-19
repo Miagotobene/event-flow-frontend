@@ -3,8 +3,7 @@ import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
-// import searchIconLight from '../../assets/images/search-w.png';
-// import searchIconDark from '../../assets/images/search-b.png';
+
 import dayIcon from '../../assets/images/day.png';
 import nightIcon from '../../assets/images/night.png';
 

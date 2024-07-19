@@ -1,11 +1,8 @@
  import React from 'react';
  import { useState, useEffect } from 'react';
  import {Container, Row, Col} from 'react-bootstrap';
-//  import { ArrowRightCircle } from 'react-bootstrap-icons';
- import homeImage from '../../assets/images/image1.png'
- import homeImage2 from '../../assets/images/emsHolding.png'
 
- 
+
  const Home = () => {
 
   // create state variable called loop number which registers the index of the word being displayed
@@ -16,10 +13,10 @@
 
   // state variable for registering each letter of the word being displayed
   const [text, setText] = useState('');
-  const period = 2000; // for time/transition between each word being typed out
+  const period = 1000; // for time/transition between each word being typed out
 
   // state variable
-  const [delta, setDelta] = useState(300 - Math.random() * 100); // variable for time/transition between each letter
+  const [delta, setDelta] = useState(100 - Math.random() * 100); // variable for time/transition between each letter
 
   // variables with words to rotate  on homepage
   const toRotate = ['Fun Events,', 'Delightful Experiences,', 'Unforgettable Memories Await!'];
