@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
@@ -31,7 +31,8 @@ const Navbar = ({theme, setTheme}) => {
             {/* <li><NavLink to="/">Home</NavLink></li> */}
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
-            <li><NavLink to="login">Log In</NavLink></li>
+            <li><NavLink to="/login">Log In</NavLink></li>
+
             <li>
             <img src={theme== 'light'? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()}/> 
             </li>

@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
+import Login from './Login';
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
 
 
 import {
@@ -48,7 +50,7 @@ const SignUp = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     setButtonText('Sending...');
-    let response = await fetch('http://localhost:3000/register', {
+    let response = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +118,11 @@ const SignUp = () => {
               <button type='submit'>
                 <span>{buttonText}</span>
               </button>
-              </Col>    
+              </Col>  
+              <div className='w-100 text-center mt-2' id='register-log'>
+                <p>Already have an account? <a href="/login">Log In</a></p>
+                
+            </div>  
             </Row>
           </form>
           </Col>
