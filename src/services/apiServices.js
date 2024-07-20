@@ -18,28 +18,32 @@ const fetchLogin = async(formData)=>{
     }
 }
 
-const fetchSignup = async(formData) => {
+const fetchSignup = async (formData) => {
     try {
-        let response = await fetch(`${BASE_URL}/signup`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          });
-          let data = response.json();
-        
-          if(data.err){
-            throw new Error(data.err)
-        }
-        return data    
+      let response = await fetch(`${BASE_URL}/users/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      let data = await response.json();
+
+      console.log('Response status:', response.status);
+      console.log('Response data:', data);
+      if (data.err) {
+        throw new Error(data.err);
+      }
+
+      return {
+        status: response.status,
+        data: data,
+      };
     } catch (error) {
-        console.log(error)
-        throw error;
-
+      console.log(error);
+      throw error;
     }
-    
-
-}
+  };
 
 export {fetchLogin, fetchSignup}
