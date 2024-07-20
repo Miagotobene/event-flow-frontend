@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+/* Default styles */
+html{
+    scroll-behavior: smooth;
+    font-size: 90%;
+  }
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    transition: .3s ease;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+}
+
+::-webkit-scrollbar *{
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #9a1750;
+    border-radius: 5px;
+    height: 50px;
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.icon{
+    font-size: 12px;
+
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.grid{
+    display: grid;
+    align-items: center;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px black; 
+}
+
+.btn .icon{
+    margin-left: .5rem;
+
+}
+
+.btn:hover{
+    background:#6f0835 ;
+    color: black;
+    /* change color above if need to */
+
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+.container-dash{
+    position: relative;
+    width: 95vw;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3e2df;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px grey;
+}

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
 // import Login from './Login';
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
+// const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
 import { fetchSignup } from '../../services/apiServices';
 
 
