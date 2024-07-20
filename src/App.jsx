@@ -36,9 +36,6 @@ const App = () => {
         <Route path='/signup' element={<SignUp setUser={setUser} />}></Route>
         <Route path='/login' element={<Login setUser={setUser} />}></Route>
 
-        {/* To be deleted -- just testing */}
-        <Route path='/dash' element={<Dashboard />}></Route>
-
       </Routes>
 
     </div>

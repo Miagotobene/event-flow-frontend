@@ -1,4 +1,5 @@
-// import React from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
@@ -6,6 +7,34 @@ import { FaLock } from 'react-icons/fa';
 
 import { fetchLogin } from '../../services/apiServices'
 
+
+const Login = ({ setUser }) => {
+  const navigate = useNavigate(); // added this for navigation purposes
+  const [message, setMessage] = useState(['']);
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const updateMessage = (msg) => {
+    setMessage(msg);
+  };
+
+  const handleChange = (e) => {
+    updateMessage('');
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await fetchLogin(formData);
+      setUser(user);
+      navigate('/');
+    } catch (err) {
+      updateMessage(err.message);
+    }
+  };
 
 const Login = () => {
 
