@@ -6,11 +6,58 @@
     overflow: auto;
 }
 
-.divTitle{
-    /* margin-bottom: ; */
-}
+
 .menuLists li {
-     margin-bottom: 1.5rem;
-
+     margin-bottom: 3rem;
 
 }
+
+.divTitle{
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    font-family: 'Lato';
+    color: #9a1750;
+}
+
+.menuLists  .listItem{
+    padding: .2rem 1.15rem;
+    width: 100%;
+    position: relative;
+
+    &::before{
+        position: absolute;
+        content: '';
+        height: 0%;
+        left: 0;
+        width:5px ;
+        border-top-left-radius: 10px ;
+        border-bottom-right-radius:10px;
+        background: #9a1750;
+    }
+
+
+    .menuLink{
+        color: rgb(108, 108, 108);
+        font-weight: 700;
+        transition: 0;
+
+        .icon{
+            margin-right: .5rem;
+        }
+    }
+
+        &:hover .menuLink{
+            color: #9a1750;
+            transition: 0;
+        }
+
+        &:hover::before{
+            height: 100%;
+            transition: .3s ease ;
+        }
+
+
+} 
+
+
+

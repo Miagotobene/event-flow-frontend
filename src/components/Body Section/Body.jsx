@@ -1,17 +1,16 @@
 // import React from 'react';
-import TopEvents from '../Body Section/Top Section/TopEvents';
-import Events from '../Body Section/Events Section/Events';
-import Rsvp from '../Body Section/RSVP section/Rsvp';
+import TopEvents from '../Body Section/Top Section/TopEvents.jsx';
+import Events from '../Body Section/Events Section/Events.jsx';
+import Rsvp from '../Body Section/RSVP section/Rsvp.jsx';
 import './body.css'
 
 const Body = () => {
   return (
     <div className='mainContent'>
-      <TopEvents />
-
+      <TopEvents/>
       <div className='bottom flex'>
-        <Events />
-        < Rsvp />
+         <Events/>
+         <Rsvp />
       </div>
     </div>
   )
