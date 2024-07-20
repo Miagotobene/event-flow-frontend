@@ -8,13 +8,13 @@ import dayIcon from '../../assets/images/day.png';
 import nightIcon from '../../assets/images/night.png';
 
 
-const Navbar = ({theme, setTheme}) => {
-    // function for theme : changing between light and dark mode
-    const toggle_mode = () => {
-        theme === 'light' ? setTheme('dark') : setTheme('light')
-    }
+const Navbar = ({ theme, setTheme, user }) => {
+  // function for theme : changing between light and dark mode
+  const toggle_mode = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
 
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav>
@@ -28,17 +28,23 @@ const Navbar = ({theme, setTheme}) => {
         <span></span>
       </div>
       <ul className={menuOpen ? 'open' : ''}>
-            {/* <li><NavLink to="/">Home</NavLink></li> */}
-            <li><NavLink to="/about">About</NavLink></li>
+        {/* <li><NavLink to="/">Home</NavLink></li> */}
+        <li><NavLink to="/about">About</NavLink></li>
+        {user ? (
+          <>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
-            <li><NavLink to="/dash">Dash</NavLink></li>
+          </>
+        ) : (
+          <li><NavLink to="/dash">Dash</NavLink></li>
+        )}
 
 
-            <li>
-            <img src={theme== 'light'? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()}/> 
-            </li>
-        </ul>
+
+        <li>
+          <img src={theme == 'light' ? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()} />
+        </li>
+      </ul>
 
 
     </nav>
