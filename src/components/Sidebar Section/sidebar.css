@@ -1,0 +1,16 @@
+.sideBar{
+    background: #e3e2df;
+    box-shadow: 1px 0px 4px grey;
+    width: 18%;
+    height: 100%;
+    overflow: auto;
+}
+
+.divTitle{
+    margin-bottom: ;
+}
+.menuLists li {
+     margin-bottom: 1.5rem;
+
+
+}

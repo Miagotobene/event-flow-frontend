@@ -32,6 +32,8 @@ const Navbar = ({theme, setTheme}) => {
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
+            <li><NavLink to="/dash">Dash</NavLink></li>
+
 
             <li>
             <img src={theme== 'light'? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()}/> 
