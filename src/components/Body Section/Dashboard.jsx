@@ -2,7 +2,9 @@
 // import React from 'react';
 import './dashboard.css';
 import Sidebar from '../Sidebar Section/Sidebar.jsx'
-import Body from './Body.jsx'
+import Body from './Body.jsx';
+// import { Link } from 'react-router-dom';
+
 
 
 const Dashboard = ({ user }) => {
@@ -10,8 +12,9 @@ const Dashboard = ({ user }) => {
     <div className='container-dash'>
       <Sidebar />
       <Body user={user} />
-
-    </div>
+      </div>
+     
+    // </div>
 
   )
 }
