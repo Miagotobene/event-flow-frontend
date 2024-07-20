@@ -1,7 +1,5 @@
 
-// import React from 'react';
-// import {Form, Button, Card} from 'react-bootstrap';
-// import SignUp from './SignUp';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { FaLock } from 'react-icons/fa';
@@ -9,23 +7,33 @@ import { FaLock } from 'react-icons/fa';
 import { fetchLogin } from '../../services/apiServices'
 
 
-const Login = () => {
+const Login = ({ setUser }) => {
+  const navigate = useNavigate(); // added this for navigation purposes
+  const [message, setMessage] = useState(['']);
   const [formData, setFormData] = useState({
     username: '',
-    password: ''
-  })
+    password: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetchLogin(formData);
-  }
+  const updateMessage = (msg) => {
+    setMessage(msg);
+  };
 
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  }
+  const handleChange = (e) => {
+    updateMessage('');
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-
-  // File needs to be connected to backend using handlesubmit and handle change
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await fetchLogin(formData);
+      setUser(user);
+      navigate('/');
+    } catch (err) {
+      updateMessage(err.message);
+    }
+  };
 
   return (
     <>
