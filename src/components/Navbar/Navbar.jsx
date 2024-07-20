@@ -28,19 +28,18 @@ const Navbar = ({ theme, setTheme, user }) => {
         <span></span>
       </div>
       <ul className={menuOpen ? 'open' : ''}>
-        {/* <li><NavLink to="/">Home</NavLink></li> */}
         <li><NavLink to="/about">About</NavLink></li>
         {user ? (
+          <>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/signout">Sign Out</NavLink></li>
+          </>
+        ) : (
           <>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
           </>
-        ) : (
-          <li><NavLink to="/dash">Dash</NavLink></li>
         )}
-
-
-
         <li>
           <img src={theme == 'light' ? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()} />
         </li>
