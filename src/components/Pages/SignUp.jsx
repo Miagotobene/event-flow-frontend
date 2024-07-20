@@ -20,6 +20,7 @@ const SignUp = () => {
     firstName: '',
     lastName: '',
     username: '',
+    password: '',
     email: '',
     phone: '',
     country: '',
@@ -51,26 +52,26 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setButtonText('Sending...');
-    const signupApi = fetchSignup(formInitialDetails);
-   
+    const signupApi = fetchSignup(formDetails);
+
     setButtonText('Send');
     setFormDetails(formInitialDetails);
 
 
-    if (signupApi.code === 200) {
+    if (signupApi.status === 201) {
       setStatus({ success: true, message: 'Message sent successfully' })
     } else {
       setStatus({ success: false, message: 'Something went wrong, please try again!' })
 
-    if (signupApi.code === 200){
-      setStatus({success: true, message: 'Message sent successfully'})
-    } else{
-      setStatus({ success: false, message: 'Something went wrong, please try again!'})
+      if (signupApi.code === 201) {
+        setStatus({ success: true, message: 'Message sent successfully' })
+      } else {
+        setStatus({ success: false, message: 'Something went wrong, please try again!' })
+
+      }
 
     }
-
   }
-}
 
 
   return (
@@ -91,6 +92,17 @@ const SignUp = () => {
                   <input type="text" value={formDetails.lastName} placeholder='Last Name' onChange={(event) => onFormUpdate('lastName', event.target.value)} />
                 </Col>
                 <Col sm={6} className='px-1'>
+                  <input type="text" value={formDetails.username} placeholder='User Name' onChange={(event) => onFormUpdate('username', event.target.value)} />
+                </Col>
+                <Col sm={6} className='px-1'>
+                  <input
+                    type="password"
+                    value={formDetails.password}
+                    placeholder='Password'
+                    onChange={(event) => onFormUpdate('password', event.target.value)}
+                  />
+                </Col>
+                <Col sm={6} className='px-1'>
                   <input type="email" value={formDetails.email} placeholder='Email Address' onChange={(event) => onFormUpdate('email', event.target.value)} />
                 </Col>
                 <Col sm={6} className='px-1'>
@@ -105,7 +117,7 @@ const SignUp = () => {
                 <CountrySelect className='country'
                   onChange={(e) => {
                     setCountryid(e.id);
-                    onFormUpdate('country', e.target.value)
+                    onFormUpdate('country', e.name)
                   }}
                   placeHolder="Select Country"
                 />
@@ -113,7 +125,7 @@ const SignUp = () => {
                   countryid={countryid}
                   onChange={(e) => {
                     setStateid(e.id);
-                    onFormUpdate('state', e.target.value)
+                    onFormUpdate('state', e.name)
                   }}
                   placeHolder="Select State"
                 />
