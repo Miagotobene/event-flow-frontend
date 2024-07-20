@@ -1,7 +1,8 @@
 
-import { useState } from 'react';
-// import { Form, Button, Card } from 'react-bootstrap';
+// import React from 'react';
+// import {Form, Button, Card} from 'react-bootstrap';
 // import SignUp from './SignUp';
+import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { FaLock } from 'react-icons/fa';
 
@@ -55,8 +56,13 @@ const Login = () => {
 
     </>
   )
+
+      
+      </>
+    )
+
 }
 
 
 
-export default Login
+export default Login;
