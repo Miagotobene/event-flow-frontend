@@ -1,9 +1,9 @@
 // import React from 'react';
-import './Rsvp.css'
+// import React from 'react'
 
 const Rsvp = () => {
   return (
-    <div>Rsvp</div>
+    <div>Rsvp'ed Events</div>
   )
 }
 

@@ -22,7 +22,6 @@ const Sidebar = () => {
           Quick Menu
         </h3>
         <ul className="menuLists grid">
-
           {/* View dashboard */}
           <li className='listItem'>
             <a href="/dashboard" className='menuLink flex'>
@@ -36,7 +35,7 @@ const Sidebar = () => {
           {/* View all the events you created */}
           <li className='listItem'>
             <a href="/events" className='menuLink flex'>
-            <BsListStars className='icons'/>
+            <BsListStars className='icon'/>
               <span className='smallText'>
                 My Events 
               </span>
