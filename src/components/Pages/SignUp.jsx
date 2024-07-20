@@ -59,7 +59,9 @@ const SignUp = ({ setUser }) => {
       setFormDetails(formInitialDetails);
       setStatus({ success: false, message: 'Something went wrong, please try again!' });
     }
+
   };
+
 
   return (
     <section className='signup' id='signup'>

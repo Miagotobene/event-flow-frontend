@@ -26,7 +26,7 @@ const fetchLogin = async(formData)=>{
 
 const fetchSignup = async (formData) => {
     try {
-      let response = await fetch(`${BASE_URL}/users/signup`, {
+      const response = await fetch(`${BASE_URL}/users/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const fetchSignup = async (formData) => {
         body: JSON.stringify(formData),
       });
   
-      let data = await response.json();
+      const data = await response.json();
 
       console.log('Response status:', response.status);
       console.log('Response data:', data);

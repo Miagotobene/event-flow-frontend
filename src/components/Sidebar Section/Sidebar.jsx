@@ -4,7 +4,8 @@ import './sidebar.css';
 // import icons from react-icons
 import { IoMdSpeedometer } from 'react-icons/io';
 import { BsListStars } from "react-icons/bs";
-import { MdOutlineExplore } from "react-icons/md";
+// import { MdOutlineExplore } from "react-icons/md";
+import { IoIosSearch } from "react-icons/io";
 import { MdOutlineRsvp } from "react-icons/md";
 
 
@@ -42,15 +43,15 @@ const Sidebar = () => {
             </a>
           </li>
 
-          {/* Explore all events */}
-          {/* <li className='listItem'>
+          {/* Search Events all events */}
+           <li className='listItem'>
             <a href="/explore/events" className='menuLink flex'>
-            <MdOutlineExplore className='icon'/>
+            <IoIosSearch className='icon'/>
               <span className='smallText'>
-                Explore
+                Search
               </span>
             </a>
-          </li> */}
+          </li> 
 
            {/* View list of RSVPed events */}
           <li className='listItem'>

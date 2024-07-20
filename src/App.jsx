@@ -20,6 +20,7 @@ const App = () => {
     <div className={`container ${theme} `} id='App'>
       <Navbar theme={theme} setTheme={setTheme} user={user} />
       <Routes>
+
         {user ? (
           <Route path="/" element={<Dashboard user={user} />} />
         ) : (
