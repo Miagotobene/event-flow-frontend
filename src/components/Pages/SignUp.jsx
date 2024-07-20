@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
-// import Login from './Login';
 import { fetchSignup } from '../../services/apiServices';
 
 
@@ -72,7 +71,6 @@ const SignUp = () => {
 
     }
   }
-
 
   return (
     <section className='signup' id='signup'>

@@ -20,11 +20,15 @@ const App = () => {
     <div className={`container ${theme} `} id='App'>
       <Navbar  theme={theme} setTheme={setTheme}/>
       <Routes>
+        {/* Routest for main pages */}
         <Route path='/' element={<Home />}></Route>
         <Route path='/about' element={<About />}></Route>
         <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/login' element={<Login />}></Route>
+        <Route path='/login' element={<Login />}></Route> 
+      {/* Add route for when user logs in/signs up */}
         <Route path='/dash' element={<Dashboard />}></Route>
+
+        {/* Routes for dashboard */}
 
       </Routes>
       <Footer />

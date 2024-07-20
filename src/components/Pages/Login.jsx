@@ -1,7 +1,5 @@
-
 // import React from 'react';
-// import {Form, Button, Card} from 'react-bootstrap';
-// import SignUp from './SignUp';
+
 import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { FaLock } from 'react-icons/fa';
@@ -10,6 +8,7 @@ import { fetchLogin } from '../../services/apiServices'
 
 
 const Login = () => {
+
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -23,9 +22,6 @@ const Login = () => {
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   }
-
-
-  // File needs to be connected to backend using handlesubmit and handle change
 
   return (
     <>
@@ -44,7 +40,7 @@ const Login = () => {
             </div>
 
             <div className='register-link'>
-              <button type='submit'>Login</button>
+              <button type='submit' onChange={handleChange}>Login</button>
               <p>
                 Don't have an account? <a href='/signup'>Sign Up</a>
               </p>
