@@ -10,6 +10,8 @@ import { FaLock } from 'react-icons/fa';
 
 const Login = () => {
 
+  // File needs to be connected to backend using handlesubmit and handle change
+
   return (
       <>
       <div className='wrapper'>
