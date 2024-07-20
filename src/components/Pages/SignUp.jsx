@@ -1,10 +1,10 @@
 // import React from 'react';
 import { useState } from 'react';
-import {Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
 // import Login from './Login';
-// const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
 import { fetchSignup } from '../../services/apiServices';
+
 
 
 import {
@@ -29,7 +29,7 @@ const SignUp = () => {
   // location state variables
   const [countryid, setCountryid] = useState(0);
   const [stateid, setStateid] = useState(0);
- 
+
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
 
@@ -48,17 +48,25 @@ const SignUp = () => {
   }
 
   // create submit function 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setButtonText('Sending...');
     const signupApi = fetchSignup(formInitialDetails);
    
     setButtonText('Send');
     setFormDetails(formInitialDetails);
+
+
+    if (result.code === 200) {
+      setStatus({ success: true, message: 'Message sent successfully' })
+    } else {
+      setStatus({ success: false, message: 'Something went wrong, please try again!' })
+
     if (signupApi.code === 200){
       setStatus({success: true, message: 'Message sent successfully'})
     } else{
       setStatus({ success: false, message: 'Something went wrong, please try again!'})
+
     }
 
   }
@@ -69,29 +77,58 @@ const SignUp = () => {
       <Container>
         <Row className='align-items-center'>
           <Col md={6} >
-          <img src={signupImage} alt="" />
+            <img src={signupImage} alt="" />
           </Col >
           <Col md={6}>
-          <h2>Sign Up Form</h2>
-          <form action="" onSubmit={handleSubmit}>
-            <Row>
-              <Col sm={6} className='px-1'>
-                <input type="text" value={formDetails.firstName} placeholder='First Name' onChange={(event) => onFormUpdate('firstName', event.target.value) }/>
-              </Col>
-              <Col sm={6} className='px-1'>
-                <input type="text" value={formDetails.lastName} placeholder='Last Name' onChange={(event) => onFormUpdate('lastName', event.target.value) }/>
-              </Col>
-              <Col sm={6} className='px-1'>
-                <input type="email" value={formDetails.email} placeholder='Email Address' onChange={(event) => onFormUpdate('email', event.target.value) }/>
-              </Col>
-              <Col sm={6} className='px-1'>
-                <input type="tel" value={formDetails.phone} placeholder='Phone Number' onChange={(event) => onFormUpdate('phone', event.target.value) }/>
-              </Col>
-              {
-                status.message &&
-                <Col>
-                <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
+            <h2>Sign Up Form</h2>
+            <form action="" onSubmit={handleSubmit}>
+              <Row>
+                <Col sm={6} className='px-1'>
+                  <input type="text" value={formDetails.firstName} placeholder='First Name' onChange={(event) => onFormUpdate('firstName', event.target.value)} />
                 </Col>
+                <Col sm={6} className='px-1'>
+                  <input type="text" value={formDetails.lastName} placeholder='Last Name' onChange={(event) => onFormUpdate('lastName', event.target.value)} />
+                </Col>
+                <Col sm={6} className='px-1'>
+                  <input type="email" value={formDetails.email} placeholder='Email Address' onChange={(event) => onFormUpdate('email', event.target.value)} />
+                </Col>
+                <Col sm={6} className='px-1'>
+                  <input type="tel" value={formDetails.phone} placeholder='Phone Number' onChange={(event) => onFormUpdate('phone', event.target.value)} />
+                </Col>
+                {
+                  status.message &&
+                  <Col>
+                    <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
+                  </Col>
+                }
+                <CountrySelect className='country'
+                  onChange={(e) => {
+                    setCountryid(e.id);
+                    onFormUpdate('country', e.target.value)
+                  }}
+                  placeHolder="Select Country"
+                />
+                <StateSelect className='state'
+                  countryid={countryid}
+                  onChange={(e) => {
+                    setStateid(e.id);
+                    onFormUpdate('state', e.target.value)
+                  }}
+                  placeHolder="Select State"
+                />
+                <Col>
+                  <button type='submit'>
+                    <span>{buttonText}</span>
+                  </button>
+                </Col>
+
+                <div className='w-100 text-center mt-2' id='register-log'>
+                  <p>Already have an account? <a href="/login">Log In</a></p>
+
+                </div>
+              </Row>
+            </form>
+
               }
               <CountrySelect className='country'
                     onChange={(e) => {
@@ -118,6 +155,7 @@ const SignUp = () => {
             </div>  
             </Row>
           </form>
+
           </Col>
         </Row>
       </Container>

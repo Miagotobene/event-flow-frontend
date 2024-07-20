@@ -1,0 +1,29 @@
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .form {
+    flex: 1;
+  }
+  
+  .calendar-container {
+    flex: 0 0 300px; /* Adjust the width of the calendar container as needed */
+  }
+  
+
+.form-group {
+    width: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label, 
+  .form-group input, 
+  .form-group textarea {
+    width: 50%; /* Make form controls take up the full width */
+  }
+  
+  .button {
+    width: 50%; /* Set button width to 50% */
+  }

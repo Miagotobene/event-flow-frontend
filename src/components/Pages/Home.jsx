@@ -1,9 +1,10 @@
- import React from 'react';
- import { useState, useEffect } from 'react';
- import {Container, Row, Col} from 'react-bootstrap';
+
+import { useState, useEffect } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import EventForm from '../EventForm';
 
 
- const Home = () => {
+const Home = () => {
 
   // create state variable called loop number which registers the index of the word being displayed
   const [loopNum, setLoopNum] = useState(0);
@@ -40,14 +41,14 @@
     setText(updatedText);
 
     if (isDeleting) {
-      setDelta(prevDelta => prevDelta/2)
+      setDelta(prevDelta => prevDelta / 2)
     }
 
-    if(!isDeleting && updatedText === fullText){
+    if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
       setIndex(prevIndex => prevIndex - 1);
       setDelta(period);
-    } else if(isDeleting && updatedText === ''){
+    } else if (isDeleting && updatedText === '') {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
       setIndex(1);
@@ -58,19 +59,19 @@
   }
 
 
-   return (
+  return (
     <section className='home' id='home'>
       <Container>
         <Row className='align-items-center'>
           <Col xs={12} md={6} xl={7}>
-          <h1>{`Your`} <span className="txt-rotate" data-rotate= '["Fun Events,", "Delightful Experiences,", "Unforgettable Memories Await!"]'></span><span className='wrap'>{text}</span></h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta ipsum sit corporis eum quisquam vel eos fugit commodi repudiandae?</p>
+            <h1>{`Your`} <span className="txt-rotate" data-rotate='["Fun Events,", "Delightful Experiences,", "Unforgettable Memories Await!"]'></span><span className='wrap'>{text}</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta ipsum sit corporis eum quisquam vel eos fugit commodi repudiandae?</p>
           </Col>
         </Row>
       </Container>
-
+      <EventForm />
     </section>
-   )
- }
- 
- export default Home;
+  )
+}
+
+export default Home;
