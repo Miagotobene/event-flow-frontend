@@ -19,6 +19,7 @@ const Login = () => {
   }
 
   return (
+
     <form onSubmit={handleSubmit}>
       <div>
         <input type='username' placeholder='Username' name='username' value={formData.username} onChange={handleChange} required />
@@ -26,6 +27,9 @@ const Login = () => {
       </div>
       <button type="submit"> Login</button>
     </form>
+
+    <div></div>
+
   )
 }
 
