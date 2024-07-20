@@ -57,7 +57,7 @@ const SignUp = () => {
     setFormDetails(formInitialDetails);
 
 
-    if (result.code === 200) {
+    if (signupApi.code === 200) {
       setStatus({ success: true, message: 'Message sent successfully' })
     } else {
       setStatus({ success: false, message: 'Something went wrong, please try again!' })
@@ -70,6 +70,7 @@ const SignUp = () => {
     }
 
   }
+}
 
 
   return (
@@ -81,7 +82,7 @@ const SignUp = () => {
           </Col >
           <Col md={6}>
             <h2>Sign Up Form</h2>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <Row>
                 <Col sm={6} className='px-1'>
                   <input type="text" value={formDetails.firstName} placeholder='First Name' onChange={(event) => onFormUpdate('firstName', event.target.value)} />
@@ -128,38 +129,9 @@ const SignUp = () => {
                 </div>
               </Row>
             </form>
-
-              }
-              <CountrySelect className='country'
-                    onChange={(e) => {
-                      setCountryid(e.id);
-                      onFormUpdate('country', e.target.value)
-                    }}
-                    placeHolder="Select Country"
-                  />
-                  <StateSelect className='state'
-                    countryid={countryid}
-                    onChange={(e) => {
-                      setStateid(e.id);
-                      onFormUpdate('state', e.target.value)
-                    }}
-                    placeHolder="Select State"
-                  />                 
-              <Col>
-              <button type='submit'>
-                <span>{buttonText}</span>
-              </button>
-              </Col>  
-              <div className='w-100 text-center mt-2' id='register-log'>
-                <p>Already have an account? <a href="/login">Log In</a></p> 
-            </div>  
-            </Row>
-          </form>
-
           </Col>
         </Row>
       </Container>
-
     </section>
   )
 }
