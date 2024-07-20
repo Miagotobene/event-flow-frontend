@@ -16,7 +16,7 @@ const Body = () => {
       {/* <TopEvents/> */}
       <div className='bottom flex'>
         <Routes>
-          <Route path='/home' element={<Dashboard />}></Route>
+          {/* <Route path='/home' element={<Dashboard />}></Route> */}
           <Route path='/search' element={<Search />}></Route>
           <Route path='/rsvps' element={<Rsvp />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
