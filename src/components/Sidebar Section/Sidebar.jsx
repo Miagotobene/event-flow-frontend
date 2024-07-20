@@ -13,7 +13,7 @@ const Sidebar = () => {
     <div className='sideBar grid'>
       <div className="logoDiv flex">
         {/* <img src="" alt="" /> inclue logo image here when you create one */}
-        <h2>Eevent Flow</h2>
+        {/* <h2>Eevent Flow</h2> */}
       </div>
 
       {/* Menu Div */}
@@ -44,14 +44,14 @@ const Sidebar = () => {
           </li>
 
           {/* Explore all events */}
-          <li className='listItem'>
+          {/* <li className='listItem'>
             <a href="/explore/events" className='menuLink flex'>
             <MdOutlineExplore className='icon'/>
               <span className='smallText'>
                 Explore
               </span>
             </a>
-          </li>
+          </li> */}
 
            {/* View list of RSVPed events */}
           <li className='listItem'>
