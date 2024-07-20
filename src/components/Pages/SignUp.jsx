@@ -2,8 +2,9 @@
 import { useState } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
-import Login from './Login';
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`
+// import Login from './Login';
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}`;
+import { fetchSignup } from '../../services/apiServices';
 
 
 import {
@@ -50,18 +51,11 @@ const SignUp = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     setButtonText('Sending...');
-    let response = await fetch(`${BASE_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formDetails)
-    });
+    const signupApi = fetchSignup(formInitialDetails);
+   
     setButtonText('Send');
-    let result = response.json();
     setFormDetails(formInitialDetails);
-
-    if (result.code === 200){
+    if (signupApi.code === 200){
       setStatus({success: true, message: 'Message sent successfully'})
     } else{
       setStatus({ success: false, message: 'Something went wrong, please try again!'})
@@ -120,8 +114,7 @@ const SignUp = () => {
               </button>
               </Col>  
               <div className='w-100 text-center mt-2' id='register-log'>
-                <p>Already have an account? <a href="/login">Log In</a></p>
-                
+                <p>Already have an account? <a href="/login">Log In</a></p> 
             </div>  
             </Row>
           </form>

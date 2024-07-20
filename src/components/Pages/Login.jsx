@@ -1,7 +1,8 @@
 
 // import React from 'react';
-import {Form, Button, Card} from 'react-bootstrap';
-import SignUp from './SignUp';
+// import {Form, Button, Card} from 'react-bootstrap';
+// import SignUp from './SignUp';
+import { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { FaLock } from 'react-icons/fa';
 
@@ -30,7 +31,7 @@ const Login = () => {
       <>
       <div className='wrapper'>
         <div className='form-box login'>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <h1>Login</h1>
             <div className='input-box'>
               <input type="text" placeholder='usename' name='username' value={formData.username} onChange={handleChange} required />
@@ -55,8 +56,8 @@ const Login = () => {
       
       </>
     )
-  
+}
 
 
 
-export default Login
+export default Login;
