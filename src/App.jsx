@@ -6,32 +6,31 @@ import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
-import Footer from './components/Pages/Footer';
 import Dashboard from './components/Body Section/Dashboard';
-
 
 
 
 const App = () => {
 
   const [theme, setTheme] = useState('light')
+  const [user, setUser] = useState(null);
+
   return (
 
     <div className={`container ${theme} `} id='App'>
-      <Navbar  theme={theme} setTheme={setTheme}/>
+      <Navbar theme={theme} setTheme={setTheme} user={user} />
       <Routes>
-        {/* Routest for main pages */}
-        <Route path='/' element={<Home />}></Route>
+
+        {user ? (
+          <Route path="/" element={<Dashboard user={user} />} />
+        ) : (
+          <Route path="/" element={<Home />} />
+        )}
         <Route path='/about' element={<About />}></Route>
-        <Route path='/signup' element={<SignUp />}></Route>
-        <Route path='/login' element={<Login />}></Route> 
-      {/* Add route for when user logs in/signs up */}
-        <Route path='/dash' element={<Dashboard />}></Route>
-
-        {/* Routes for dashboard */}
-
+        <Route path='/signup' element={<SignUp setUser={setUser} />}></Route>
+        <Route path='/login' element={<Login />}></Route>
       </Routes>
-      <Footer />
+
     </div>
   )
 }

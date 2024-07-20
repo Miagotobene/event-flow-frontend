@@ -1,19 +1,17 @@
-// import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import signupImage from '../../assets/images/contact-img.svg';
 import { fetchSignup } from '../../services/apiServices';
 
-
-
 import {
-  // CitySelect,
   CountrySelect,
   StateSelect,
 } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
+  const navigate = useNavigate();
 
   const formInitialDetails = {
     firstName: '',
@@ -26,20 +24,12 @@ const SignUp = () => {
     state: ''
   }
 
-  // location state variables
   const [countryid, setCountryid] = useState(0);
   const [stateid, setStateid] = useState(0);
-
-
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-
-  // submit button state variable
   const [buttonText, setButtonText] = useState('Submit');
-
-  // status: form sent successfully
   const [status, setStatus] = useState({});
 
-  // function for updating form
   const onFormUpdate = (category, value) => {
     setFormDetails({
       ...formDetails,
@@ -47,30 +37,31 @@ const SignUp = () => {
     })
   }
 
-  // create submit function 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setButtonText('Sending...');
-    const signupApi = fetchSignup(formDetails);
 
-    setButtonText('Send');
-    setFormDetails(formInitialDetails);
+    try {
+      const signupApi = await fetchSignup(formDetails);
 
+      setButtonText('Send');
+      setFormDetails(formInitialDetails);
 
-    if (signupApi.status === 201) {
-      setStatus({ success: true, message: 'Message sent successfully' })
-    } else {
-      setStatus({ success: false, message: 'Something went wrong, please try again!' })
-
-      if (signupApi.code === 201) {
-        setStatus({ success: true, message: 'Message sent successfully' })
+      if (signupApi.status === 201) {
+        setStatus({ success: true, message: 'Signup successful' });
+        setUser(signupApi.data);
+        navigate('/');
       } else {
-        setStatus({ success: false, message: 'Something went wrong, please try again!' })
-
+        setStatus({ success: false, message: 'Something went wrong, please try again!' });
       }
-
+    } catch (error) {
+      setButtonText('Send');
+      setFormDetails(formInitialDetails);
+      setStatus({ success: false, message: 'Something went wrong, please try again!' });
     }
-  }
+
+  };
+
 
   return (
     <section className='signup' id='signup'>

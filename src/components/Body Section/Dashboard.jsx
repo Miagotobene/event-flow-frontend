@@ -5,13 +5,14 @@ import Sidebar from '../Sidebar Section/Sidebar.jsx'
 import Body from './Body.jsx'
 
 
-const Dashboard = () => {
+const Dashboard = ({ user }) => {
   return (
     <div className='container-dash'>
-        <Sidebar />
-        <Body />
+      <Sidebar />
+      <Body user={user} />
+
     </div>
-    
+
   )
 }
 
