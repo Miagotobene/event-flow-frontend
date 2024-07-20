@@ -2,7 +2,7 @@
 import './sidebar.css';
 
 // import icons from react-icons
-import { IoMdSpeedometer } from 'react-icons/io';
+import { IoHomeSharp } from "react-icons/io5";
 import { BsListStars } from "react-icons/bs";
 // import { MdOutlineExplore } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
@@ -25,8 +25,8 @@ const Sidebar = () => {
         <ul className="menuLists grid">
           {/* View dashboard */}
           <li className='listItem'>
-            <a href="/dashboard" className='menuLink flex'>
-              <IoMdSpeedometer className='icon'/>
+            <a href="/dash" className='menuLink flex'>
+              <IoHomeSharp className='icon'/>
               <span className='smallText'>
                 Dashboard
               </span>

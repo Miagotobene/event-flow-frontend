@@ -46,4 +46,19 @@ const fetchSignup = async (formData) => {
     }
   };
 
-export {fetchLogin, fetchSignup}
+
+  // function for fetching events 
+  const fetchEvents = async() => {
+    try {
+      const res = await fetch(BASE_URL, {
+        headers: {'Content-Type': 'application/json'},
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+
+export {fetchLogin, fetchSignup, fetchEvents}
