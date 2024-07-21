@@ -8,7 +8,7 @@ import dayIcon from '../../assets/images/day.png';
 import nightIcon from '../../assets/images/night.png';
 
 
-const Navbar = ({ theme, setTheme, user }) => {
+const Navbar = ({ theme, setTheme, user, handleSignout }) => {
   // function for theme : changing between light and dark mode
   const toggle_mode = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -32,7 +32,7 @@ const Navbar = ({ theme, setTheme, user }) => {
         {user ? (
           <>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/signout">Sign Out</NavLink></li>
+            <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
           </>
         ) : (
           <>

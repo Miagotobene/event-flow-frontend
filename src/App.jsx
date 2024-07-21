@@ -7,7 +7,7 @@ import About from './components/Pages/About';
 import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
 import Dashboard from './components/Body Section/Dashboard';
-import { getUser } from './services/apiServices';
+import { getUser, signout } from './services/apiServices';
 
 
 
@@ -15,11 +15,15 @@ const App = () => {
 
   const [theme, setTheme] = useState('light')
   const [user, setUser] = useState(getUser());
+  const handleSignout = () => {
+    signout()
+    setUser(null)
+  }
 
   return (
 
     <div className={`container ${theme} `} id='App'>
-      <Navbar theme={theme} setTheme={setTheme} user={user} />
+      <Navbar theme={theme} setTheme={setTheme} user={user} handleSignout={handleSignout} />
       <Routes>
         {user ? (
           <Route path="/" element={<Dashboard user={user} />} />

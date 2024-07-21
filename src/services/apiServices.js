@@ -65,5 +65,8 @@ const fetchSignup = async (formData) => {
     const user = JSON.parse(atob(token.split('.')[1]));
     return user;
   }
+  const signout = () => {
+    localStorage.removeItem('token');
+  };
 
-export {fetchLogin, fetchSignup, getUser}
+export {fetchLogin, fetchSignup, getUser, signout}
