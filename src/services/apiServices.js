@@ -132,8 +132,6 @@ const fetchSignup = async (formData) => {
       console.log(error);
     }
   };
-
-
     const eventForm = async (formData) => {
       try {
         const token = localStorage.getItem('token');
