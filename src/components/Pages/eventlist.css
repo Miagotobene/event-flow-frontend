@@ -1,0 +1,31 @@
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.event-card {
+  background-color: #c9c6c6;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 250px;
+  text-align: center;
+}
+
+.event-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: #9a1750;
+}
+
+.event-card p {
+  margin: 0 0 16px 0;
+  font-size: 0.9rem;
+  color: rgb(108, 108, 108);
+}
+
+.event-card a {
+  color: #9a1750;
+}

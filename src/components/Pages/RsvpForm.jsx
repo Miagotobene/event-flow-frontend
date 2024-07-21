@@ -20,7 +20,7 @@ const RsvpForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-    <label htmlFor="text-input">Your comment:</label>
+    <label htmlFor="text-input">RSVP For This Event?</label>
     <textarea
       required
       type="text"
