@@ -10,7 +10,7 @@ import { AuthedUserContext } from '../../App';
 const EventDetails = (props) => {
 
   const { eventId } = useParams();
-  console.log('eventId', eventId);
+  // console.log('eventId', eventId);
 
   const [event, setEvent] = useState(null);
   const user = useContext(AuthedUserContext);
@@ -33,12 +33,12 @@ const EventDetails = (props) => {
   };
 
   // Verify that event state is being set correctly:
-  console.log('hoot state:', event);
+  console.log('event state:', event);
   if (!event)
     return (
       <main>
         <header>
-          <p>{event.category.toUpperCase()}</p>
+          {/* <p>{event.category.toUpperCase()}</p> */}
           <h1>{event.title}</h1>
           <p>
             {event.organizer} posted on
@@ -51,7 +51,7 @@ const EventDetails = (props) => {
 
         {/* should this be a button or link instead? */}
         <section>
-          <h2>RSVP</h2>
+          <button>RSVP</button>
           <RsvpForm handleAddFrom={handleAddForm} />
         </section>
 
