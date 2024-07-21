@@ -89,7 +89,7 @@ const fetchSignup = async (formData) => {
         },});
 
       const data = await response.json();
-      console.log(`${response.status} and ${data}`)
+      console.log(`${response.status}`, `${data}`)
 
       return {
         status: response.status,
