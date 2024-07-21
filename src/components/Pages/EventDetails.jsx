@@ -8,16 +8,22 @@ import { AuthedUserContext } from '../../App';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
-  // console.log('eventId', eventId);
+  console.log('eventId', eventId);
 
   const [event, setEvent] = useState(null);
+  const [error, setError] = useState(null);
   const user = useContext(AuthedUserContext);
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const eventData = await fetchOneEvent(eventId);
-      console.log('EventData', eventData);
-      setEvent(eventData);
+      try {
+        const eventData = await fetchOneEvent(eventId);
+        console.log('EventData', eventData);
+        setEvent(eventData);
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      }
     };
     fetchEvent();
   }, [eventId]);
@@ -34,6 +40,10 @@ const EventDetails = (props) => {
 
 
   // Add a check to ensure the event data is loaded before rendering
+  if (error) {
+    return <p>Error loading event: {error}</p>;
+  }
+
   if (!event) {
     return <p>Loading...</p>;
   }
@@ -48,7 +58,7 @@ const EventDetails = (props) => {
         </p>
       </header>
       <p>{event.description}</p>
-      <p>{event.tags.join(', ')}</p>
+      <p>{event.tags ? event.tags.join(', ') : 'No tags available'}</p>
 
 
       <section>
