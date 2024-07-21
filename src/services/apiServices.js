@@ -96,6 +96,7 @@ const fetchSignup = async (formData) => {
 
     // function for fetching a single event
     const fetchOneEvent = async (eventId) => {
+
         try {
           const token = localStorage.getItem('token');
     
@@ -117,11 +118,16 @@ const fetchSignup = async (formData) => {
 
     const eventForm = async (formData) => {
       try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
         // check what the route in the backend is
         const res = await fetch(`${BASE_URL}/events/new`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
           body: JSON.stringify(formData),
         });

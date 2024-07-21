@@ -8,7 +8,7 @@ import { AuthedUserContext } from '../../App';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
-  console.log('eventId', eventId);
+  // console.log('eventId', eventId);
 
   const [event, setEvent] = useState(null);
   const user = useContext(AuthedUserContext);
@@ -32,6 +32,7 @@ const EventDetails = (props) => {
   // Verify that event state is being set correctly:
   console.log('event state:', event);
 
+
   // Add a check to ensure the event data is loaded before rendering
   if (!event) {
     return <p>Loading...</p>;
@@ -48,6 +49,7 @@ const EventDetails = (props) => {
       </header>
       <p>{event.description}</p>
       <p>{event.tags.join(', ')}</p>
+
 
       <section>
         <h2>RSVP</h2>
