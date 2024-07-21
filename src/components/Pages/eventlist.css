@@ -2,11 +2,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  align-items: center;
   justify-content: center;
 }
 
+h1{
+  text-align: center;
+  margin-bottom: 5%;
+
+  }
+
+
 .event-card {
-  background-color: #c9c6c6;
+  background-color: #d2d2d0;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
@@ -16,8 +24,11 @@
 
 .event-card h2 {
   margin: 0 0 8px 0;
+  /* margin-bottom: 2%; */
   font-size: 1.2rem;
   color: #9a1750;
+  text-align: center;
+  /* margin: auto 0; */
 }
 
 .event-card p {
@@ -28,4 +39,17 @@
 
 .event-card a {
   color: #9a1750;
+}
+
+.event-card button{
+  border-radius: 40px;
+  width: 50px;
+  height: 20px;
+  outline: none;
+  border: none;
+  /* cursor: pointer; */
+}
+
+.rsvp-button{
+  margin: 5%;
 }

@@ -6,6 +6,8 @@ import RsvpForm from './RsvpForm';
 import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css'
+import { Form } from 'react-bootstrap';
+
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
@@ -37,8 +39,14 @@ const EventDetails = (props) => {
 
   console.log('event state:', event);
 
+  // handle RSVP category change
+  const [eventDetails, setEventDetails] = useState(formModel);
 
 
+  const handleRSVPCategoryChange = (event) => {
+    const { value } = event.target;
+    setEventDetails({ ...eventDetails, category: value })
+}
 
   // Add a check to ensure the event data is loaded before rendering
   if (error) {
@@ -51,35 +59,30 @@ const EventDetails = (props) => {
 
   return (
     <main>
-      <header>
-        <p>{event.category?.toUpperCase()}</p>
+        {/* <p>{event.category?.toUpperCase()}</p> */}
         <h1>{event.title}</h1>
-        <p>
-          {event.organizer?.name} posted on {event.date} at {event.time}
-        </p>
-      </header>
-      <p>{event.description}</p>
-      <p>{event.tags ? event.tags.join(', ') : 'No tags available'}</p>
+        <div className='event-card'>
+          <p>Organized by: {event.organizer?.name} </p>
+          <p>Date: {new Date(event.date).toLocaleDateString()}</p>
+          <p>Time: {event.time}</p>
+          <p>{event.description}</p>
+          <p>{event.tags ? event.tags.join(', ') : 'No tags available'}</p>
 
+          {/* <Form.Group className="rsvp-group">
+                    <Form.Label>RSVP </Form.Label>
+                    <Form.Select aria-label="category" onChange={handleRSVPCategoryChange} >
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        </Form.Select>
+                        </Form.Group> */}
+        {/* <Link to={`events/:eventId/rsvp`}><button>RSVP</button></Link> */}
 
-      <Link to={`/events/eventId/rsvp`}>
-            <button>RSVP</button>
-            {/* <RsvpForm handleAddFrom={handleAddForm} /> */}
-        </Link>
-
-      {/* <section>
-        <h2>RSVP</h2>
-      
-      </section>
-
-      {event.organizer?._id === user?._id && (
-        <>
-          <Link to={`/events/${eventId}/edit`}>Edit</Link>
-          <button onClick={() => props.handleDeleteEvent(eventId)}>Delete</button>
-        </>
-      )} */}
+         
+      </div>
     </main>
   );
 };
 
 export default EventDetails;
+// onChange={handleCategoryChange} 
+ {/* <RsvpForm handleAddFrom={handleAddForm} /> */}
