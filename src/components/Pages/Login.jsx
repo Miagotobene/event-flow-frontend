@@ -36,22 +36,6 @@ const Login = ({ setUser }) => {
     }
   };
 
-const Login = () => {
-
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetchLogin(formData);
-  }
-
-  const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  }
-
   return (
     <>
       <div className='wrapper'>
