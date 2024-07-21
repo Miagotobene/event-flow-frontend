@@ -5,9 +5,7 @@ import { fetchOneEvent, RsvpCreate } from '../../services/apiServices';
 import './EventForm.css';
 import RsvpForm from './RsvpForm';
 import { Link } from 'react-router-dom';
-
-// need this to be added to the backend
-// import { AuthedUserContext } from '../../App';
+import { AuthedUserContext } from '../../App';
 
 const EventDetails = (props) => {
 
@@ -15,9 +13,7 @@ const EventDetails = (props) => {
   console.log('eventId', eventId);
 
   const [event, setEvent] = useState(null);
-
-  // Add the following
-  // const user = useContext(AuthedUserContext);
+  const user = useContext(AuthedUserContext);
 
   useEffect(() => {
     const fetchEvent = async () => {
