@@ -95,6 +95,25 @@ const fetchSignup = async (formData) => {
   };
 
     // function for fetching a single event
+    // const fetchOneEvent = async (eventId) => {
+    //     try {
+    //       const token = localStorage.getItem('token');
+    
+    //       if (!token) {
+    //         throw new Error('No authorization token found');
+    //       }
+    //     const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer ${token}`,
+    //       },
+    //     });
+    //     return res.json();
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+
     const fetchOneEvent = async (eventId) => {
       try {
         const token = localStorage.getItem('token');
@@ -113,8 +132,6 @@ const fetchSignup = async (formData) => {
       console.log(error);
     }
   };
-    
-
     const eventForm = async (formData) => {
       try {
         const token = localStorage.getItem('token');
