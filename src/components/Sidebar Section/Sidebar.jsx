@@ -13,8 +13,6 @@ const Sidebar = () => {
   return (
     <div className='sideBar grid'>
       <div className="logoDiv flex">
-        {/* <img src="" alt="" /> inclue logo image here when you create one */}
-        {/* <h2>Eevent Flow</h2> */}
       </div>
 
       {/* Menu Div */}
@@ -25,7 +23,7 @@ const Sidebar = () => {
         <ul className="menuLists grid">
           {/* View dashboard */}
           <li className='listItem'>
-            <a href="/dash" className='menuLink flex'>
+            <a href="/events/" className='menuLink flex'>
               <IoHomeSharp className='icon'/>
               <span className='smallText'>
                 Dashboard
