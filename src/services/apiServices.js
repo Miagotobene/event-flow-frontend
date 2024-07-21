@@ -82,8 +82,37 @@ const fetchSignup = async (formData) => {
       console.log(error);
     }
   };
+
+  const createEvent = async(eventData)=>{
+    try {
+      const token = localStorage.getItem('token');
+      
+      if (!token) {
+        throw new Error('No authorization token found');
+      }
+  
+      const response = await fetch(`${BASE_URL}/events`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(eventData),
+      });
+  
+      const data = await response.json();
+  
+      return {
+        status: response.status,
+        event: data,
+      };
+    } catch (error) {
+      console.error('Error creating event:', error);
+      return { status: 500, error: error.message };
+    }
+  }
   
 
 
-export {fetchLogin, fetchSignup, fetchEvents, getUser, signout}
+export {fetchLogin, fetchSignup, fetchEvents, getUser, signout, createEvent}
 
