@@ -76,7 +76,7 @@ export {fetchLogin, fetchSignup, getUser, signout}
   // function for fetching events 
   const fetchEvents = async() => {
     try {
-      const res = await fetch(BASE_URL, {
+      const res = await fetch(`${BASE_URL}/events/`, {
         headers: {'Content-Type': 'application/json'},
       });
       return res.json();
@@ -84,8 +84,73 @@ export {fetchLogin, fetchSignup, getUser, signout}
       console.log(error);
     }
   };
+
+    // function for fetching a single event
+    const fetchOneEvent = async (eventId) => {
+      try {
+        const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+          headers: {'Content-Type': 'application/json'},
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+
+    const eventForm = async (formData) => {
+      try {
+        // check what the route in the backend is
+        const res = await fetch(`${BASE_URL}/events/new`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+
+    // RSVP Form
+    const RsvpCreate = async (eventId, formData) => {
+      try {
+        const res = await fetch(`${BASE_URL}/${eventId}/rsvp`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
   
 
+    // Delete an event
+    const deleteEvent = async (eventId) => {
+      try {
+        const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
 
-export {fetchLogin, fetchSignup, fetchEvents}
+          },
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent}
+
+
 

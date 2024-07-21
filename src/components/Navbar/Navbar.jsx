@@ -33,9 +33,13 @@ const Navbar = ({ theme, setTheme, user, handleSignout }) => {
           <>
             <li><NavLink to="/">Home</NavLink></li>
 
+            <li><Link to="/events/new">New Event</Link></li>
+
+
             <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
 
             <li><NavLink to="/events">Events</NavLink></li>
+
             <li><NavLink to="/signout">Sign Out</NavLink></li>
           </>
         ) : (

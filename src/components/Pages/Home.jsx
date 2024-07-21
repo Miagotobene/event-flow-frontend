@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import EventForm from '../EventForm';
+import EventForm from '../Body Section/Events Section/EventForm';
 
 
 const Home = () => {
