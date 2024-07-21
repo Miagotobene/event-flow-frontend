@@ -1,7 +1,7 @@
 // import React from 'react'
 
 // import icons
-import { BsArrowRightShort } from "react-icons/bs";
+// import { BsArrowRightShort } from "react-icons/bs";
 
 const Events = () => {
   return (
