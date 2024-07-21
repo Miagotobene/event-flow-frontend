@@ -1,14 +1,14 @@
 // import React from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from 'react';
-
-
+import { useState, useContext } from 'react';
 import dayIcon from '../../assets/images/day.png';
 import nightIcon from '../../assets/images/night.png';
+import { AuthedUserContext } from '../../App';
 
 
-const Navbar = ({ theme, setTheme, user, handleSignout }) => {
+const Navbar = ({ theme, setTheme, handleSignout }) => {
+  const user = useContext(AuthedUserContext);
   // function for theme : changing between light and dark mode
   const toggle_mode = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
@@ -32,15 +32,9 @@ const Navbar = ({ theme, setTheme, user, handleSignout }) => {
         {user ? (
           <>
             <li><NavLink to="/">Home</NavLink></li>
-
             <li><Link to="/events/new">New Event</Link></li>
-
-
             <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
-
             <li><NavLink to="/events">Events</NavLink></li>
-
-            <li><NavLink to="/signout">Sign Out</NavLink></li>
           </>
         ) : (
           <>
