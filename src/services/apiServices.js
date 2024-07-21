@@ -70,8 +70,6 @@ const fetchSignup = async (formData) => {
     localStorage.removeItem('token');
   };
 
-export {fetchLogin, fetchSignup, getUser, signout}
-
 
   // function for fetching events 
   const fetchEvents = async() => {
@@ -87,5 +85,5 @@ export {fetchLogin, fetchSignup, getUser, signout}
   
 
 
-export {fetchLogin, fetchSignup, fetchEvents}
+export {fetchLogin, fetchSignup, fetchEvents, getUser, signout}
 

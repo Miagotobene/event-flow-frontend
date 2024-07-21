@@ -32,18 +32,13 @@ const Navbar = ({ theme, setTheme, user, handleSignout }) => {
         {user ? (
           <>
             <li><NavLink to="/">Home</NavLink></li>
-
-            <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
-
             <li><NavLink to="/events">Events</NavLink></li>
-            <li><NavLink to="/signout">Sign Out</NavLink></li>
+            <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
           </>
         ) : (
           <>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
-
-
           </>
         )}
         <li>
