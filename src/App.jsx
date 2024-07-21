@@ -7,13 +7,14 @@ import About from './components/Pages/About';
 import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
 import Dashboard from './components/Body Section/Dashboard';
+import { getUser } from './services/apiServices';
 
 
 
 const App = () => {
 
   const [theme, setTheme] = useState('light')
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(getUser());
 
   return (
 

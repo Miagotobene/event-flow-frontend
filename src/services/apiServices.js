@@ -14,10 +14,14 @@ const fetchLogin = async(formData)=>{
         if(data.err){
             throw new Error(data.err)
         }
-        return {
-          status: res.status,
-          data: data,
-        };
+        if (data.token) {
+          localStorage.setItem('token', data.token); // add this line to store the JWT token in localStorage
+          const user = JSON.parse(atob(data.token.split('.')[1]));
+          return {
+            status: res.status,
+            user:user
+          }
+        }
     }catch(error){
         console.log(error)
         throw error
@@ -41,15 +45,25 @@ const fetchSignup = async (formData) => {
       if (data.err) {
         throw new Error(data.err);
       }
-
-      return {
-        status: response.status,
-        data: data,
-      };
+      if (data.token) {
+        localStorage.setItem('token', data.token); 
+        const user = JSON.parse(atob(data.token.split('.')[1]));
+        return {
+          status: response.status,
+          user:user
+        }
+      }
     } catch (error) {
       console.log(error);
       throw error;
     }
   };
 
-export {fetchLogin, fetchSignup}
+  const getUser = () =>  {
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    const user = JSON.parse(atob(token.split('.')[1]));
+    return user;
+  }
+
+export {fetchLogin, fetchSignup, getUser}
