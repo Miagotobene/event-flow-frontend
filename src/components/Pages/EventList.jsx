@@ -1,40 +1,25 @@
-// import React from 'react'
+import { Link } from 'react-router-dom';
 
-// import React from 'react';
-import { useState, useEffect } from 'react';
-import { fetchEvents } from '../../services/apiServices';
-
-// createContext, 
-const EventList = ({ user }) => {
-
-  const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    const fetchAllEvents = async () => {
-      const EventsData = await fetchEvents.index();
-      // console.log('EventsData:', EventsData);
-
-      // Set state
-      setEvents(EventsData)
-    };
-    if (user) fetchAllEvents();
-  }, [user]);
+const EventList = ({ events }) => {
+  if (!events || events.length === 0) {
+    return <p>No events available</p>;
+  }
 
   return (
     <main>
       {events.map((event) => (
-        <>
-          <h2 key={event._id}>{event.title}</h2>
-          <p >{event.description}</p>
-          <p >{event.date}</p>
-          <p >{event.time}</p>
-          <p >{event.category}</p>
-        </>
-
+        <Link key={event._id} to={`/events/${event._id}`}>
+          <article>
+            <header>
+              <h2>{event.title}</h2>
+              <p>{event.organizer} posted on {event.date} at {event.time}</p>
+            </header>
+            <p>{event.description}</p>
+          </article>
+        </Link>
       ))}
     </main>
-
-  )
+  );
 }
 
-export default EventList
+export default EventList;

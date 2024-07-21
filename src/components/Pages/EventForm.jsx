@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Calendar from 'react-calendar';
 import TimePicker from 'react-bootstrap-time-picker';
@@ -12,9 +11,12 @@ import {
 } from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 import { createEvent } from '../../services/apiServices';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const EventForm = () => {
+
+const EventForm = ({ handleAddEvent }) => {
     const navigate = useNavigate();
+    const { eventId } = useParams()
     const formModel = {
         title: '',
         description: '',
@@ -35,6 +37,7 @@ const EventForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const eventDate = new Date(date);
         eventDate.setSeconds(time);
         const updatedEventDetails = {
@@ -57,6 +60,9 @@ const EventForm = () => {
         }
 
         setEventDetails(formModel);
+        setEventDetails(formModel);
+        handleAddEvent(formData);
+
     };
 
     const handleChange = (event) => {
@@ -90,6 +96,7 @@ const EventForm = () => {
             <Form onSubmit={handleSubmit} className="form">
                 <Form.Group className="form-group">
                     <Form.Label>Event Title</Form.Label>
+                    <h1>{eventId ? 'Edit Event' : 'New Event'}</h1>
                     <Form.Control type="text" placeholder="Title" name="title" value={eventDetails.title} onChange={handleChange} />
                 </Form.Group>
 

@@ -13,8 +13,6 @@ const Dashboard = ({ user }) => {
       <Sidebar />
       <Body user={user} />
       </div>
-     
-    // </div>
 
   )
 }

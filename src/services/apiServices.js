@@ -73,46 +73,128 @@ const fetchSignup = async (formData) => {
 
   // function for fetching events 
   const fetchEvents = async() => {
-    try {
-      const res = await fetch(BASE_URL, {
-        headers: {'Content-Type': 'application/json'},
-      });
-      return res.json();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const createEvent = async(eventData)=>{
+    
     try {
       const token = localStorage.getItem('token');
-      
+
       if (!token) {
         throw new Error('No authorization token found');
       }
-  
+
       const response = await fetch(`${BASE_URL}/events`, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify(eventData),
-      });
-  
+        },});
+
       const data = await response.json();
-  
+      console.log(`${response.status} and ${data}`)
+
       return {
         status: response.status,
         event: data,
       };
-    } catch (error) {
-      console.error('Error creating event:', error);
-      return { status: 500, error: error.message };
+    }catch (error) {
+      console.log(error);
     }
-  }
+  };
+
+    // function for fetching a single event
+    const fetchOneEvent = async (eventId) => {
+      try {
+        const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+          headers: {'Content-Type': 'application/json'},
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+
+    const eventForm = async (formData) => {
+      try {
+        // check what the route in the backend is
+        const res = await fetch(`${BASE_URL}/events/new`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    const createEvent = async(eventData)=>{
+      try {
+        const token = localStorage.getItem('token');
+  
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+  
+        const response = await fetch(`${BASE_URL}/events`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify(eventData),
+        });
+  
+        const data = await response.json();
+  
+        return {
+          status: response.status,
+          event: data,
+        };
+      } catch (error) {
+        console.error('Error creating event:', error);
+        return { status: 500, error: error.message };
+      }
+    }
+
+
+    // RSVP Form
+    const RsvpCreate = async (eventId, formData) => {
+      try {
+        const res = await fetch(`${BASE_URL}/${eventId}/rsvp`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
   
 
+    // Delete an event
+    const deleteEvent = async (eventId) => {
+      try {
+        const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
 
-export {fetchLogin, fetchSignup, fetchEvents, getUser, signout, createEvent}
+          },
+        });
+        return res.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
+
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent, createEvent, getUser, signout}
+
+
 
