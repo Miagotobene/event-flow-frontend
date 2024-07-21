@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { fetchEvents } from '../../../services/apiServices';
 
 // createContext, 
-const EventList = ({user}) => {
+const EventList = ({user, events}) => {
 
   const [events, setEvents] = useState([]);
 
@@ -21,7 +21,20 @@ const EventList = ({user}) => {
   }, [user]);
 
   return (
-    <div>EventList</div>
+    <main>
+      {events.map((event) => (
+        <>
+         <h2>{event.title}</h2>
+         <p key={hoot._id}>{hoot.title}</p>
+         <p >{event.description}</p>
+        <p >{event.date}</p>
+        <p >{event.time}</p>
+        <p >{event.category}</p>
+        </>
+       
+      ))}
+    </main>
+
   )
 }
 

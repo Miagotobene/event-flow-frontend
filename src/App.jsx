@@ -25,7 +25,7 @@ const App = () => {
         {user ? (
            <>
            <Route path="/" element={<Dashboard user={user} />} />
-           <Route path="/events" element={<EventList user={user} />} />
+           <Route path="/events" element={<EventList events={events} user={user} />} />
            </>
           
 
