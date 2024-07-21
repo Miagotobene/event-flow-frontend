@@ -8,7 +8,7 @@ import { AuthedUserContext } from '../../App';
 
 const EventDetails = (props) => {
   const { eventId } = useParams();
-  // console.log('eventId', eventId);
+  console.log('eventId', eventId);
 
   const [event, setEvent] = useState(null);
   const [error, setError] = useState(null);

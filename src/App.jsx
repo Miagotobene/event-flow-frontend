@@ -62,7 +62,7 @@ const App = () => {
             <>
               <Route path="/" element={<Dashboard />}>
                 <Route path="events" element={<EventList events={events} />} />
-                <Route path="events/:id" element={<EventDetails />} />
+                <Route path="events/:eventId" element={<EventDetails />} />
                 <Route path="events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
                 {/* <Route path="events/:eventId" element={<EventDetails handleDeleteEvent={handleDeleteEvent} />} /> */}
                 <Route path="events/:eventId/edit" element={<EventForm />} />
