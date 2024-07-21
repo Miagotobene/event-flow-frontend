@@ -15,7 +15,7 @@ const EventList = ({ events }) => {
             {/* <p>Render one event here {event}</p> */}
             <header>
               <h2>{event.title}</h2>
-              <p>{event.organizer} posted on {event.date} at {event.time}</p>
+              <p>{event.organizer?.name} posted on {new Date(event.date).toLocaleDateString()} at {event.time}</p>
             </header>
             <p>{event.description}</p>
           </article>

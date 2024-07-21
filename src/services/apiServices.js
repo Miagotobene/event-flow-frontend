@@ -72,31 +72,25 @@ const fetchSignup = async (formData) => {
 
 
   // function for fetching events 
-  const fetchEvents = async() => {
-    
+  const fetchEvents = async () => {
     try {
-      const token = localStorage.getItem('token');
-
-      if (!token) {
-        throw new Error('No authorization token found');
-      }
-
       const response = await fetch(`${BASE_URL}/events`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },});
-
-      const data = await response.json();
-      console.log(`${response.status}`, `${data}`)
-
-      return {
-        status: response.status,
-        event: data,
-      };
-    }catch (error) {
-      console.log(error);
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch events');
+      }
+      const events = await response.json();
+      console.log(events)
+      return events;
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      return [];
     }
   };
 
