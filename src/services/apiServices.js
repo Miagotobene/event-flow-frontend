@@ -70,17 +70,32 @@ const fetchSignup = async (formData) => {
     localStorage.removeItem('token');
   };
 
-export {fetchLogin, fetchSignup, getUser, signout}
-
 
   // function for fetching events 
   const fetchEvents = async() => {
+    
     try {
-      const res = await fetch(`${BASE_URL}/events/`, {
-        headers: {'Content-Type': 'application/json'},
-      });
-      return res.json();
-    } catch (error) {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        throw new Error('No authorization token found');
+      }
+
+      const response = await fetch(`${BASE_URL}/events`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },});
+
+      const data = await response.json();
+      console.log(`${response.status} and ${data}`)
+
+      return {
+        status: response.status,
+        event: data,
+      };
+    }catch (error) {
       console.log(error);
     }
   };
@@ -111,6 +126,35 @@ export {fetchLogin, fetchSignup, getUser, signout}
         return res.json();
       } catch (error) {
         console.log(error);
+      }
+    }
+
+    const createEvent = async(eventData)=>{
+      try {
+        const token = localStorage.getItem('token');
+  
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+  
+        const response = await fetch(`${BASE_URL}/events`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify(eventData),
+        });
+  
+        const data = await response.json();
+  
+        return {
+          status: response.status,
+          event: data,
+        };
+      } catch (error) {
+        console.error('Error creating event:', error);
+        return { status: 500, error: error.message };
       }
     }
 
@@ -150,7 +194,7 @@ export {fetchLogin, fetchSignup, getUser, signout}
 
 
 
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent}
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent, createEvent, getUser, signout}
 
 
 

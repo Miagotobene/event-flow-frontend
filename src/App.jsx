@@ -1,33 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-
 import Home from './components/Pages/Home';
 import About from './components/Pages/About';
 import SignUp from './components/Pages/SignUp';
 import Login from './components/Pages/Login';
-import Dashboard from './components/Body Section/Dashboard';
-import { getUser, signout } from './services/apiServices';
-import EventList from './components/Body Section/Events Section/EventList';
-import EventDetails from './components/Body Section/Events Section/EventDetails';
-import { fetchEvents, eventForm, deleteEvent } from './services/apiServices'
-import EventForm from './components/Body Section/Events Section/EventForm';
-
-
+import EventForm from './components/Pages/EventForm';
+import EventDetails from './components/Pages/EventDetails';
+import Dashboard from './components/Dashboard/Dashboard';
+import EventList from './components/Pages/EventList';
+import { getUser, signout, fetchEvents, eventForm, deleteEvent } from './services/apiServices';
+import Rsvp from './components/Pages/Rsvp';
 
 const App = () => {
-
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('light');
   const [user, setUser] = useState(getUser());
+  const [events, setEvents] = useState([]);
+
   const handleSignout = () => {
-    signout()
-    setUser(null)
+    signout();
+    setUser(null);
   }
 
   const navigate = useNavigate();
-
-  // function for handling all events
-  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchAllEvents = async () => {
@@ -35,55 +30,47 @@ const App = () => {
       console.log('EventsData:', EventsData);
 
       // Set state
-      setEvents(EventsData)
+      setEvents(EventsData.event.events);
     };
     if (user) fetchAllEvents();
   }, [user]);
 
-  // function for adding new events. Also not sure if Tommy added a handle add function already
   const handleAddEvent = async (eventFormData) => {
     const newEvent = await eventForm(eventFormData);
-    // console.log('FormData', eventFormData);
-    setEvents([newEvent, ...events])
-    navigate('/events'); 
+    setEvents([newEvent, ...events]);
+    navigate('/events');
   };
 
-  // function to delete event
   const handleDeleteEvent = async (eventId) => {
-    // console.log('eventId', eventId);
     const deletedEvent = await deleteEvent(eventId);
     setEvents(events.filter((event) => event._id !== deletedEvent._id));
-    // redirect the user
     navigate('/events');
   }
 
   return (
-
     <div className={`container ${theme} `} id='App'>
       <Navbar theme={theme} setTheme={setTheme} user={user} handleSignout={handleSignout} />
       <Routes>
-
         {user ? (
-           <>
-           <Route path="/" element={<Dashboard user={user} />} />
-           <Route path="/events" element={<EventList events={events} />} />
-           <Route path="/events/:eventId" element={<EventDetails/>} />
-           <Route path="/events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
-           <Route path="/events/:eventId" element={<EventDetails handleDeleteHoot={handleDeleteEvent} />}/>
-           <Route path="/events/:eventId/edit" element={<EventForm />} />
+          <>
+            <Route path="/" element={<Dashboard user={user} />}>
+              <Route path="/events" element={<EventList events={events} />} />
+              <Route path="/events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
+              <Route path="/events/:eventId" element={<EventDetails handleDeleteHoot={handleDeleteEvent} />} />
+              <Route path="/events/:eventId/edit" element={<EventForm />} />
+              <Route path="event/:id" element={<EventDetails />} />
+              <Route path="/rsvp" element={<Rsvp />} />
+              <Route path="/explore/events" element={<EventList events={events} />} />
 
-           </>
-          
-
+            </Route>
+          </>
         ) : (
           <Route path="/" element={<Home />} />
         )}
         <Route path='/about' element={<About />}></Route>
         <Route path='/signup' element={<SignUp setUser={setUser} />}></Route>
         <Route path='/login' element={<Login setUser={setUser} />}></Route>
-
       </Routes>
-
     </div>
   )
 }

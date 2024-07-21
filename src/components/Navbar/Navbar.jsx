@@ -46,8 +46,6 @@ const Navbar = ({ theme, setTheme, user, handleSignout }) => {
           <>
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
-
-
           </>
         )}
         <li>
