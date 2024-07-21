@@ -40,8 +40,6 @@ const Navbar = ({ theme, setTheme, user }) => {
             <li><NavLink to="/signup">Sign Up</NavLink></li>
             <li><NavLink to="/login">Log In</NavLink></li>
 
-            {/* To be deleted */}
-            <li><NavLink to="/dash">Dash</NavLink></li>
 
           </>
         )}
