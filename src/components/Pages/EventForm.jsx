@@ -5,6 +5,11 @@ import Calendar from 'react-calendar';
 import TimePicker from 'react-bootstrap-time-picker';
 import 'react-calendar/dist/Calendar.css';
 import './EventForm.css';
+import {
+    CountrySelect,
+    StateSelect,
+} from "react-country-state-city";
+import "react-country-state-city/dist/react-country-state-city.css";
 
 const EventForm = () => {
     const formModel = {
@@ -12,7 +17,8 @@ const EventForm = () => {
         description: '',
         date: '',
         time: '',
-        location: '',
+        country: '',
+        state: '',
         category: ''
     };
 
@@ -20,6 +26,8 @@ const EventForm = () => {
     const [formData, setFormData] = useState('')
     const [date, setDate] = useState(new Date());
     const [time, setTime] = useState(0);
+    const [countryid, setCountryid] = useState(0);
+    const [stateid, setStateid] = useState(0);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -38,6 +46,13 @@ const EventForm = () => {
 
     const handleChange = (event) => {
         setEventDetails({ ...eventDetails, [event.target.name]: event.target.value });
+    };
+
+    const handleLocationChange = (category, value) => {
+        setEventDetails((prevDetails) => ({
+            ...prevDetails,
+            [category]: value
+        }));
     };
 
     const handleDateChange = (newDate) => {
@@ -66,6 +81,24 @@ const EventForm = () => {
                 <Form.Group className="form-group">
                     <Form.Label>City</Form.Label>
                     <Form.Control type="text" placeholder="City" name="location" value={eventDetails.location} onChange={handleChange} required />
+                </Form.Group>
+                <Form.Group className="form-group">
+                    <Form.Label>Country & State</Form.Label>
+                    <CountrySelect className='country'
+                        onChange={(e) => {
+                            setCountryid(e.id);
+                            handleLocationChange('country', e.name);
+                        }}
+                        placeHolder="Select Country"
+                    />
+                    <StateSelect className='state'
+                        countryid={countryid}
+                        onChange={(e) => {
+                            setStateid(e.id);
+                            handleLocationChange('state', e.name)
+                        }}
+                        placeHolder="Select State"
+                    />
                 </Form.Group>
 
                 <Form.Group className="form-group">

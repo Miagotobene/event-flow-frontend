@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import EventForm from '../EventForm';
 
 
 const Home = () => {
@@ -69,7 +68,6 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <EventForm />
     </section>
   )
 }

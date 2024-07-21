@@ -32,7 +32,7 @@ const Navbar = ({ theme, setTheme, user, handleSignout }) => {
         {user ? (
           <>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/events">Events</NavLink></li>
+            <li><NavLink to="/newEvent">Events</NavLink></li>
             <li><NavLink to="" onClick={handleSignout}>Sign Out</NavLink></li>
           </>
         ) : (
