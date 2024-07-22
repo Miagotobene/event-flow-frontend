@@ -67,7 +67,7 @@ const Home = () => {
           <Col xs={12} md={6} xl={7}>
           <img src={Image} alt="" />
             <h1>{`Your`} <span className="txt-rotate" data-rotate='["Fun Events,", "Delightful Experiences,", "Unforgettable Memories Await!"]'></span><span className='wrap'>{text}</span></h1>
-            <p>Plan, organize, and execute events effortlessly. Your perfect event starts here—don't miss out!</p>
+            <p>Plan, organize, and execute events effortlessly. Your perfect event starts here—don't miss out! Sign up now!</p>
           </Col>
         </Row>
       </Container>
