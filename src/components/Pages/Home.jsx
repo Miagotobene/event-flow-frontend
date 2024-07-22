@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Image from '../../assets/images/contact-img.svg';
+
 
 
 const Home = () => {
@@ -13,13 +15,13 @@ const Home = () => {
 
   // state variable for registering each letter of the word being displayed
   const [text, setText] = useState('');
-  const period = 1000; // for time/transition between each word being typed out
+  const period = .001; // for time/transition between each word being typed out
 
-  // state variable
-  const [delta, setDelta] = useState(100 - Math.random() * 100); // variable for time/transition between each letter
+  // state variable  .01 - Math.random() * 10
+  const [delta, setDelta] = useState(0); // variable for time/transition between each letter
 
   // variables with words to rotate  on homepage
-  const toRotate = ['Fun Events,', 'Delightful Experiences,', 'Unforgettable Memories Await!'];
+  const toRotate = ['Events,', 'Experiences,', 'Memories Await!'];
 
   const [index, setIndex] = useState(1);
 
@@ -63,8 +65,9 @@ const Home = () => {
       <Container>
         <Row className='align-items-center'>
           <Col xs={12} md={6} xl={7}>
+          <img src={Image} alt="" />
             <h1>{`Your`} <span className="txt-rotate" data-rotate='["Fun Events,", "Delightful Experiences,", "Unforgettable Memories Await!"]'></span><span className='wrap'>{text}</span></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur soluta ipsum sit corporis eum quisquam vel eos fugit commodi repudiandae?</p>
+            <p>Plan, organize, and execute events effortlessly. Your perfect event starts here—don't miss out!</p>
           </Col>
         </Row>
       </Container>

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
-import signupImage from '../../assets/images/contact-img.svg';
 import { fetchSignup } from '../../services/apiServices';
 
 import {
@@ -68,7 +67,7 @@ const SignUp = ({ setUser }) => {
       <Container>
         <Row className='align-items-center'>
           <Col md={6} >
-            <img src={signupImage} alt="" />
+            {/* <img src={signupImage} alt="" /> */}
           </Col >
           <Col md={6}>
             <h2>Sign Up Form</h2>
