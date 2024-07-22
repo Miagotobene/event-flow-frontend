@@ -216,9 +216,28 @@ const fetchSignup = async (formData) => {
       }
     };
 
+    const fetchMyEvents = async() =>{
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+        const response = await fetch(`${BASE_URL}/events/myevents`,{
+          method: 'GET',
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await response.json();
+        return data
+      } catch (error) {
+        return { status: 500, error: error.message };
+      }
+    }
 
 
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent, createEvent, getUser, signout}
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent, createEvent, getUser, signout, fetchMyEvents}
 
 
 
