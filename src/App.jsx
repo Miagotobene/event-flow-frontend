@@ -9,7 +9,7 @@ import EventForm from './components/Pages/EventForm';
 import EventDetails from './components/Pages/EventDetails';
 import Dashboard from './components/Dashboard/Dashboard';
 import EventList from './components/Pages/EventList';
-import { getUser, signout, fetchEvents, eventForm, deleteEvent } from './services/apiServices';
+import { getUser, signout, fetchEvents, eventForm, deleteEvent, fetchMyEvents } from './services/apiServices';
 import RsvpForm from './components/Pages/RsvpForm';
 
 export const AuthedUserContext = createContext(null);
@@ -18,6 +18,7 @@ const App = () => {
   const [theme, setTheme] = useState('light');
   const [user, setUser] = useState(getUser());
   const [events, setEvents] = useState([]);
+  const [userEvents, setUserEvents] = useState([]);
 
   const handleSignout = () => {
     signout();
@@ -38,7 +39,22 @@ const App = () => {
         console.error('Unexpected data structure:', EventsData);
       }
     };
-    if (user) fetchAllEvents();
+    const fetchAllMyEvents = async () => {
+      const EventsData = await fetchMyEvents();
+      console.log('myevents:', EventsData);
+
+      // Ensure data structure matches what is expected
+      if (Array.isArray(EventsData)) {
+        setUserEvents(EventsData);
+      } else {
+        console.error('Unexpected data structure:', EventsData);
+      }
+    };
+
+    if (user) {
+      fetchAllEvents()
+      fetchAllMyEvents()
+    }
   }, [user]);
 
   const handleAddEvent = async (eventFormData) => {
@@ -68,6 +84,7 @@ const App = () => {
                 <Route path="events/:eventId/edit" element={<EventForm />} />
                 <Route path="/rsvp" element={<RsvpForm />} />
                 <Route path="explore/events" element={<EventList events={events} />} />
+                <Route path="myevents" element={<EventList events={userEvents} />} />
               </Route>
             </>
           ) : (

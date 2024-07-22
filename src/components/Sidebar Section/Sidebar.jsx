@@ -24,7 +24,7 @@ const Sidebar = () => {
           {/* View dashboard */}
           <li className='listItem'>
             <a href="/events/" className='menuLink flex'>
-              <IoHomeSharp className='icon'/>
+              <IoHomeSharp className='icon' />
               <span className='smallText'>
                 Dashboard
               </span>
@@ -33,28 +33,28 @@ const Sidebar = () => {
 
           {/* View all the events you created */}
           <li className='listItem'>
-            <a href="/events" className='menuLink flex'>
-            <BsListStars className='icon'/>
+            <a href="/myevents" className='menuLink flex'>
+              <BsListStars className='icon' />
               <span className='smallText'>
-                My Events 
+                My Events
               </span>
             </a>
           </li>
 
           {/* Search Events all events */}
-           <li className='listItem'>
+          <li className='listItem'>
             <a href="/explore/events" className='menuLink flex'>
-            <IoIosSearch className='icon'/>
+              <IoIosSearch className='icon' />
               <span className='smallText'>
                 Search
               </span>
             </a>
-          </li> 
+          </li>
 
-           {/* View list of RSVPed events */}
+          {/* View list of RSVPed events */}
           <li className='listItem'>
             <a href="/rsvp" className='menuLink flex'>
-            <MdOutlineRsvp className='icon'/>
+              <MdOutlineRsvp className='icon' />
               <span className='smallText'>
                 My RSVPs
               </span>
@@ -63,8 +63,8 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      
-   </div>
+
+    </div>
   )
 }
 
