@@ -186,10 +186,15 @@ const fetchSignup = async (formData) => {
     // RSVP Form
     const RsvpCreate = async (eventId, formData) => {
       try {
-        const res = await fetch(`${BASE_URL}/${eventId}/rsvp`, {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+        const res = await fetch(`${BASE_URL}/rsvp/${eventId}/rsvp`, {
           method: 'POST',
-          headers: {
+          headers:{
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
           body: JSON.stringify(formData),
         });
