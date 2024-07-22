@@ -9,7 +9,7 @@ const EventList = ({ events }) => {
 
   return (
     <main>
-      <h1>Latest List of Events</h1>
+      <h1>Latest Events</h1>
       <div className='event-list'>
       {events.map((event) => (
         <div key={event._id} className='event-card'>
@@ -19,16 +19,6 @@ const EventList = ({ events }) => {
           <p>Time: {event.time}</p>
           <button><Link to={`/events/${event._id}`}>Details</Link></button>
         </div>
-        // <Link key={event._id} to={`/events/${event._id}`}>
-        //   <article>
-        //     {/* <p>Render one event here {event}</p> */}
-        //     <header>
-        //       <h2>{event.title}</h2>
-        //       <p>{event.organizer?.name} posted on {new Date(event.date).toLocaleDateString()} at {event.time}</p>
-        //     </header>
-        //     <p>{event.description}</p>
-        //   </article>
-        // </Link>
       ))}
 
       </div>

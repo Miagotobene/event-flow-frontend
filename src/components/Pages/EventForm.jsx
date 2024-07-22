@@ -127,7 +127,7 @@ const EventForm = ({ handleAddEvent }) => {
                 <Form.Group className="form-group">
                     <Form.Label>Category</Form.Label>
                     <Form.Select aria-label="category" onChange={handleCategoryChange}>
-                        <option>Category</option>
+                        {/* <option>Category</option> */}
                         <option value="Birthdays">Birthdays</option>
                         <option value="Weddings">Weddings</option>
                         <option value="Graduations">Graduations</option>
