@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Calendar from 'react-calendar';
@@ -35,34 +35,38 @@ const EventForm = ({ handleAddEvent }) => {
     const [stateid, setStateid] = useState(0);
     const [status, setStatus] = useState({});
 
+    useEffect(() => {
+        // Reset status on form changes
+        if (status.message) {
+            setStatus({});
+        }
+    }, [eventDetails, date, time]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const eventDate = new Date(date);
         eventDate.setSeconds(time);
+
         const updatedEventDetails = {
             ...eventDetails,
             date: eventDate,
         };
-        console.log(updatedEventDetails);
-        setFormData(updatedEventDetails);
 
         try {
-            const fetchCreateEvent = await createEvent(formData);
+            const fetchCreateEvent = await createEvent(updatedEventDetails);
 
             if (fetchCreateEvent.status === 201) {
-                setStatus({ success: true, message: 'Signup successful' });
-                navigate('/')
+                setStatus({ success: true, message: 'Event created successfully' });
+                setEventDetails(formModel);
+                handleAddEvent(updatedEventDetails);
+                navigate('/myevents');
+            } else {
+                throw new Error('Event creation failed');
             }
         } catch (error) {
             setStatus({ success: false, message: 'Something went wrong, please try again!' });
-
         }
-
-        setEventDetails(formModel);
-        setEventDetails(formModel);
-        handleAddEvent(formData);
-
     };
 
     const handleChange = (event) => {

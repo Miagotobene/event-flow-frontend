@@ -153,14 +153,16 @@ const fetchSignup = async (formData) => {
       }
     }
 
-    const createEvent = async(eventData)=>{
+    const createEvent = async(eventData) => {
       try {
         const token = localStorage.getItem('token');
-  
+    
         if (!token) {
           throw new Error('No authorization token found');
         }
-  
+    
+        console.log('-----Event Data-------', eventData); // Log eventData to verify its structure
+    
         const response = await fetch(`${BASE_URL}/events`, {
           method: 'POST',
           headers: {
@@ -169,9 +171,11 @@ const fetchSignup = async (formData) => {
           },
           body: JSON.stringify(eventData),
         });
-  
+    
+        console.log('-----Response-------', response);
+    
         const data = await response.json();
-  
+    
         return {
           status: response.status,
           event: data,
@@ -181,6 +185,7 @@ const fetchSignup = async (formData) => {
         return { status: 500, error: error.message };
       }
     }
+    
 
 
     // RSVP Form
