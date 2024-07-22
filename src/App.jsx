@@ -47,11 +47,11 @@ const App = () => {
     navigate('/events');
   };
 
-  const handleDeleteEvent = async (eventId) => {
-    const deletedEvent = await deleteEvent(eventId);
-    setEvents(events.filter((event) => event._id !== deletedEvent._id));
-    navigate('/events');
-  };
+  // const handleDeleteEvent = async (eventId) => {
+  //   const deletedEvent = await deleteEvent(eventId);
+  //   setEvents(events.filter((event) => event._id !== deletedEvent._id));
+  //   navigate('/events');
+  // };
 
   return (
     <AuthedUserContext.Provider value={user}>
@@ -66,7 +66,7 @@ const App = () => {
                 <Route path="events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
                 {/* <Route path="events/:eventId" element={<EventDetails handleDeleteEvent={handleDeleteEvent} />} /> */}
                 <Route path="events/:eventId/edit" element={<EventForm />} />
-                {/* <Route path="events/:eventId/rsvp" element={<RsvpForm />} /> */}
+                <Route path="/rsvp" element={<RsvpForm />} />
                 <Route path="explore/events" element={<EventList events={events} />} />
               </Route>
             </>

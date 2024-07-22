@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css'
 import { Form } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
 
 
 const EventDetails = (props) => {
@@ -40,13 +42,7 @@ const EventDetails = (props) => {
   console.log('event state:', event);
 
   // handle RSVP category change
-  const [eventDetails, setEventDetails] = useState(formModel);
 
-
-  const handleRSVPCategoryChange = (event) => {
-    const { value } = event.target;
-    setEventDetails({ ...eventDetails, category: value })
-}
 
   // Add a check to ensure the event data is loaded before rendering
   if (error) {
@@ -68,14 +64,21 @@ const EventDetails = (props) => {
           <p>{event.description}</p>
           <p>{event.tags ? event.tags.join(', ') : 'No tags available'}</p>
 
-          {/* <Form.Group className="rsvp-group">
-                    <Form.Label>RSVP </Form.Label>
-                    <Form.Select aria-label="category" onChange={handleRSVPCategoryChange} >
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                        </Form.Select>
-                        </Form.Group> */}
-        {/* <Link to={`events/:eventId/rsvp`}><button>RSVP</button></Link> */}
+          <Form>
+          { <Form.Group className="rsvp-group" >
+                              <Form.Label>RSVP </Form.Label>
+                              <Form.Select aria-label="category"  >
+                                  <option value="Yes">Yes</option>
+                                  <option value="No">No</option>
+
+                                
+                                  </Form.Select>
+                                  </Form.Group> }
+                                  {/* <button>RSVP</button> */}
+                                  <Button variant="primary" type="submit" size='sm' className='button'>RSVP</Button>
+
+          </Form>
+        
 
          
       </div>
