@@ -7,6 +7,14 @@
     
 }
 
+.dark .sideBar{
+    background: #605f5f;
+    box-shadow: 1px 0px 4px grey;
+    width: 18%;
+    height: 100%;
+    overflow: auto;
+    
+}
 
 .menuLists li {
      margin-bottom: 3rem;
