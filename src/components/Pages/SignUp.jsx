@@ -49,7 +49,7 @@ const SignUp = ({ setUser }) => {
       if (signupApi.status === 201) {
         setStatus({ success: true, message: 'Signup successful' });
         setUser(signupApi.data);
-        navigate('/');
+        navigate('/login');
       } else {
         setStatus({ success: false, message: 'Something went wrong, please try again!' });
       }

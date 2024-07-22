@@ -43,7 +43,6 @@ const EventDetails = (props) => {
       console.error(error);
       setError(error.message);
     }
-
   };
 
   const handleFormChange = (e) => {
