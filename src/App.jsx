@@ -86,7 +86,7 @@ const App = () => {
         <Routes>
           {user ? (
             <>
-              <Route path="/" element={<Dashboard theme={theme} setTheme={setTheme}/>}>
+              <Route path="/" element={<Dashboard theme={theme} setTheme={setTheme} />}>
                 <Route path="events" element={<EventList events={events} />} />
                 <Route path="events/:eventId" element={<EventDetails />} />
                 <Route path="events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
