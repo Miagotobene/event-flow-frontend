@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import { fetchOneEvent, RsvpCreate } from '../../services/apiServices';
+import { fetchOneEvent } from '../../services/apiServices'; // RsvpCreate
 import './EventForm.css';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css';

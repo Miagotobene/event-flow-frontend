@@ -9,7 +9,7 @@ import { IoIosSearch } from "react-icons/io";
 import { MdOutlineRsvp } from "react-icons/md";
 
 
-const Sidebar = () => {
+const Sidebar = ({theme, setTheme}) => {
   return (
     <div className='sideBar grid'>
       <div className="logoDiv flex">
@@ -62,8 +62,6 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-
-
     </div>
   )
 }

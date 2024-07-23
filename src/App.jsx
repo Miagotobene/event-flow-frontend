@@ -9,8 +9,9 @@ import EventForm from './components/Pages/EventForm';
 import EventDetails from './components/Pages/EventDetails';
 import Dashboard from './components/Dashboard/Dashboard';
 import EventList from './components/Pages/EventList';
-import { getUser, signout, fetchEvents, eventForm, deleteEvent, fetchMyEvents } from './services/apiServices';
-import RsvpForm from './components/Pages/RsvpForm';
+import { getUser, signout, fetchEvents, eventForm, fetchMyEvents, fetchRSVP } from './services/apiServices'; //deleteEvent
+import RsvpList from './components/Pages/RsvpList';
+
 
 export const AuthedUserContext = createContext(null);
 
@@ -19,6 +20,9 @@ const App = () => {
   const [user, setUser] = useState(getUser());
   const [events, setEvents] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
+
+  const [rsvps, setRsvps] = useState([]);
+
 
   const handleSignout = () => {
     signout();
@@ -39,6 +43,8 @@ const App = () => {
         console.error('Unexpected data structure:', EventsData);
       }
     };
+
+
     const fetchAllMyEvents = async () => {
       const EventsData = await fetchMyEvents();
       console.log('myevents:', EventsData);
@@ -63,11 +69,15 @@ const App = () => {
     navigate('/events');
   };
 
-  // const handleDeleteEvent = async (eventId) => {
-  //   const deletedEvent = await deleteEvent(eventId);
-  //   setEvents(events.filter((event) => event._id !== deletedEvent._id));
-  //   navigate('/events');
-  // };
+  // UseEffect for RSVPs
+  // useEffect(() => {
+  //   const fetchAllRSVP = async () => {
+  //     const rsvpData = await fetchRSVP();
+  //     console.log('RSVP Data:', rsvpData);
+  //   };
+  //   if (user) fetchAllRSVP();
+  // }, [user]);
+
 
   return (
     <AuthedUserContext.Provider value={user}>
@@ -76,13 +86,13 @@ const App = () => {
         <Routes>
           {user ? (
             <>
-              <Route path="/" element={<Dashboard />}>
+              <Route path="/" element={<Dashboard theme={theme} setTheme={setTheme}/>}>
                 <Route path="events" element={<EventList events={events} />} />
                 <Route path="events/:eventId" element={<EventDetails />} />
                 <Route path="events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
                 {/* <Route path="events/:eventId" element={<EventDetails handleDeleteEvent={handleDeleteEvent} />} /> */}
                 <Route path="events/:eventId/edit" element={<EventForm />} />
-                <Route path="/rsvp" element={<RsvpForm />} />
+                <Route path="/rsvp" element={<RsvpList rsvps={rsvps} />} />
                 <Route path="explore/events" element={<EventList events={events} />} />
                 <Route path="myevents" element={<EventList events={userEvents} />} />
               </Route>

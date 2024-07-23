@@ -31,6 +31,12 @@ header h1 {
     margin-bottom: 0.5rem;
 }
 
+.dark h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #e3e2df;
+}
+
 main {
     max-width: 800px;
     margin: 20px auto;
@@ -44,7 +50,7 @@ main {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #7b7a7a;
+    background-color: #4b0523;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -60,13 +66,13 @@ main {
 
 .dark .about-section h2 {
     font-size: 2rem;
-    color: rgb(50, 49, 49);
+    color:#e3e2df;
     margin-bottom: 0.5rem;
 }
 
 .dark .about-section p {
     font-size: 1rem;
-    color:rgb(34, 34, 34);
+    color:#e3e2df;
     line-height: 1.6;
 }
 .about-section p {

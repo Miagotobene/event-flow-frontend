@@ -3,12 +3,18 @@
     height: 100%;
     padding: 2rem;
     overflow: auto;
+}
 
+.dark .mainContent{
+    width: 82%;
+    height: 100%;
+    padding: 2rem;
+    overflow: auto;
+    background-color: #670630;
 }
 
 .bottom{
     margin-top: 2rem;
     gap: 2rem;
     align-items: flex-start;
-
 }
