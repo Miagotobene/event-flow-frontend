@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EventList from './components/Pages/EventList';
 import { getUser, signout, fetchEvents, eventForm, fetchMyEvents, fetchRSVP } from './services/apiServices'; //deleteEvent
 import RsvpList from './components/Pages/RsvpList';
+import CategoryPage from './components/Pages/CategoryPage';
 
 
 export const AuthedUserContext = createContext(null);
@@ -43,6 +44,10 @@ const App = () => {
         console.error('Unexpected data structure:', EventsData);
       }
     };
+    const fetchAllRSVP = async () => {
+      const rsvpData = await fetchRSVP();
+      setRsvps(rsvpData)
+    };
 
 
     const fetchAllMyEvents = async () => {
@@ -60,6 +65,7 @@ const App = () => {
     if (user) {
       fetchAllEvents()
       fetchAllMyEvents()
+      fetchAllRSVP()
     }
   }, [user]);
 
@@ -92,8 +98,9 @@ const App = () => {
                 <Route path="events/new" element={<EventForm handleAddEvent={handleAddEvent} />} />
                 <Route path="events/:eventId/edit" element={<EventForm />} />
                 <Route path="rsvp" element={<RsvpList rsvps={rsvps} />} />
-                {/* <Route path="explore/events" element={<EventList events={events} />} /> */}
+                <Route path="explore/events" element={<EventList events={events} />} />
                 <Route path="myevents" element={<EventList events={userEvents} />} />
+                <Route path="category/:categoryName" element={<CategoryPage />} />
               </Route>
             </>
           ) : (

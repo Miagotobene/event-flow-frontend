@@ -235,10 +235,36 @@ const fetchSignup = async (formData) => {
       }
     };
 
+    const fetchEventsByCategory = async (category) => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+    
+        const response = await fetch(`${BASE_URL}/events/category?category=${category}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to fetch events');
+        }
+    
+        const events = await response.json();
+        console.log(events);
+        return events;
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        return [];
+      }
+    };
 
 
-
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, getUser, signout, fetchMyEvents, fetchRSVP}
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, getUser, signout, fetchMyEvents, fetchRSVP, fetchEventsByCategory}
 
 
 
