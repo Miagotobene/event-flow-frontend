@@ -94,25 +94,6 @@ const fetchSignup = async (formData) => {
     }
   };
 
-    // function for fetching a single event
-    // const fetchOneEvent = async (eventId) => {
-    //     try {
-    //       const token = localStorage.getItem('token');
-    
-    //       if (!token) {
-    //         throw new Error('No authorization token found');
-    //       }
-    //     const res = await fetch(`${BASE_URL}/events/${eventId}`, {
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer ${token}`,
-    //       },
-    //     });
-    //     return res.json();
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
 
     const fetchOneEvent = async (eventId) => {
       try {
@@ -186,30 +167,7 @@ const fetchSignup = async (formData) => {
       }
     }
     
-
-
-    // RSVP Form
-    const RsvpCreate = async (eventId, formData) => {
-      try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-          throw new Error('No authorization token found');
-        }
-        const res = await fetch(`${BASE_URL}/rsvp/${eventId}/rsvp`, {
-          method: 'POST',
-          headers:{
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(formData),
-        });
-        return res.json();
-      } catch (error) {
-        console.log(error);
-      }
-    };
   
-
     // Delete an event
     const deleteEvent = async (eventId) => {
       try {
@@ -247,7 +205,34 @@ const fetchSignup = async (formData) => {
     }
 
 
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, RsvpCreate, deleteEvent, createEvent, getUser, signout, fetchMyEvents}
+    // Fetch RSVP'ed events
+    const fetchRSVP = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${BASE_URL}/rsvp/myrsvp`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to fetch events');
+        }
+        const events = await response.json();
+        console.log(events)
+        return events;
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        return [];
+      }
+    };
+
+
+
+
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, getUser, signout, fetchMyEvents, fetchRSVP}
 
 
 

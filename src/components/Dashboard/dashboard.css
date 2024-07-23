@@ -106,12 +106,15 @@ img{
     background: #e3e2df;
     overflow: hidden;
     border-radius: 1rem;
-    box-shadow: 2px 2px 8px rgb(168, 167, 167); 
+    box-shadow: 2px 2px 8px rgb(73, 73, 73); 
 
     @media (max-width: 768px){
         padding: 6px 10px;
       }
 }
+
+
+
 
 .body-dash{
     padding: 20px 30px;
