@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import { fetchOneEvent, deleteEvent } from '../../services/apiServices'; // RsvpCreate
+import { fetchOneEvent, deleteEvent, createRsvp } from '../../services/apiServices'; // RsvpCreate
 import './EventForm.css';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css';
@@ -33,11 +33,10 @@ const EventDetails = () => {
     fetchEvent();
   }, [eventId, user]);
 
-  const handleAddForm = async (formData) => {
+  const handleAddForm = async () => {
     try {
-      console.log('RSVP FormData', formData);
-      const newRsvp = await RsvpCreate(eventId, formData);
-      console.log(newRsvp)
+      console.log('RSVP FormData', rsvpFormData);
+      const newRsvp = await createRsvp(rsvpFormData, eventId);
       navigate('/rsvp')
     } catch (error) {
       console.error(error);
@@ -54,9 +53,6 @@ const EventDetails = () => {
     e.preventDefault();
     handleAddForm(rsvpFormData);
   };
-
-  console.log('event state:', event);
-  console.log('rsvpFormData:', rsvpFormData);
 
   if (error) {
     return <p>Error loading event: {error}</p>;
