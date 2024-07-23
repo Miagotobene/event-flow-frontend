@@ -1,29 +1,61 @@
-.form-container {
+ /* .form-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
   }
-  
-  .form {
+   */
+  /* .form {
     flex: 1;
   }
-  
+   */
+
+
   .calendar-container {
-    flex: 0 0 300px; /* Adjust the width of the calendar container as needed */
+    flex: 0 0 300px; 
+    justify-content: center;
+    margin-left: 25%;
+  
+
   }
+    /* Adjust the width of the calendar container as needed */
+  
   
 
 .form-group {
     width: 50%;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 25%;
   }
   
-  .form-group label, 
-  .form-group input, 
-  .form-group textarea {
-    width: 50%; /* Make form controls take up the full width */
-  }
+.form-space{
+  width: 100%;
+
+}
   
+.label{
+  margin-left: 50px;
+  margin-top: 10%;
+}
+
+
   .button {
-    width: 50%; /* Set button width to 50% */
-  }
+    width: 50%; 
+    margin-top: 2%;
+
+  } 
+
+
+  .event-form {background-color: #d2d2d0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 100%;
+  text-align: center;}
+
+  .dark .event-form {background-color: #4b0523;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 100%;
+    text-align: center;}
+  

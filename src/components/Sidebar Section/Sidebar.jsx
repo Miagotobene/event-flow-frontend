@@ -12,9 +12,7 @@ import { MdOutlineRsvp } from "react-icons/md";
 const Sidebar = ({ theme, setTheme }) => {
   return (
     <div className='sideBar grid'>
-      <div className="logoDiv flex">
-      </div>
-
+    
       {/* Menu Div */}
       <div className='menuDiv'>
         <h3 className='divTitle'>
