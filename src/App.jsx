@@ -44,6 +44,19 @@ const App = () => {
       }
     };
 
+    // fetch RSVP Events
+    const fetchRsvpEvents = async () => {
+      const RsvpData = await fetchRSVP();
+      console.log('RSVP Data:', RsvpData);
+
+      if (Array.isArray(RsvpData)) {
+        setRsvps(RsvpData);
+      } else {
+        console.error('Unexpected data structure:', RsvpData);
+      }
+
+    };
+
 
     const fetchAllMyEvents = async () => {
       const EventsData = await fetchMyEvents();
@@ -60,6 +73,7 @@ const App = () => {
     if (user) {
       fetchAllEvents()
       fetchAllMyEvents()
+      fetchRsvpEvents()
     }
   }, [user]);
 
@@ -69,14 +83,6 @@ const App = () => {
     navigate('/events');
   };
 
-  // UseEffect for RSVPs
-  // useEffect(() => {
-  //   const fetchAllRSVP = async () => {
-  //     const rsvpData = await fetchRSVP();
-  //     console.log('RSVP Data:', rsvpData);
-  //   };
-  //   if (user) fetchAllRSVP();
-  // }, [user]);
 
 
   return (

@@ -188,7 +188,7 @@ const fetchSignup = async (formData) => {
       }
     };
 
-    
+
 
     const fetchMyEvents = async() =>{
       try {
@@ -226,9 +226,9 @@ const fetchSignup = async (formData) => {
         if (!response.ok) {
           throw new Error('Failed to fetch events');
         }
-        const events = await response.json();
-        console.log(events)
-        return events;
+        const rsvp = await response.json();
+        console.log('my RSVP DATA', rsvp)
+        return rsvp;
       } catch (error) {
         console.error('Error fetching events:', error);
         return [];
