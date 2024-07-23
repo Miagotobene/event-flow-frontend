@@ -37,15 +37,14 @@ const Body = () => {
           <>
             <div className="container_dash">
               <div className='categories'>
-                <box-icon name='edit' type='solid' style={{ width: '9em', height: '9em' }}></box-icon>
-                <box-icon name='cake' type='solid' style={{ width: '9em', height: '9em' }}></box-icon>
-                <box-icon name='party' type='solid' style={{ width: '9em', height: '9em' }}></box-icon>
-                <box-icon name='hard-hat' type='solid' style={{ width: '9em', height: '9em' }}></box-icon>
-                <box-icon name='cricket-ball' type='solid' style={{ width: '9em', height: '9em' }}></box-icon>
+                <box-icon name='edit' type='solid' value='art' style={{ width: '9em', height: '9em' }}></box-icon>
+                <box-icon name='cake' type='solid' value='birthdays' style={{ width: '9em', height: '9em' }}></box-icon>
+                <box-icon name='party' type='solid' value='parties' style={{ width: '9em', height: '9em' }}></box-icon>
+                <box-icon name='hard-hat' type='solid' value='workshops' style={{ width: '9em', height: '9em' }}></box-icon>
+                <box-icon name='cricket-ball' type='solid' value='sports' style={{ width: '9em', height: '9em' }}></box-icon>
               </div>
               <EventList events={userEvents} />
             </div>
-
           </>
         }
       </div>

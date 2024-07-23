@@ -37,3 +37,27 @@
         align-items: center;
         justify-content: center;
 }
+
+@keyframes jiggle {
+    0%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    75% {
+      transform: rotate(-10deg);
+    }
+  }
+  
+  .categories box-icon {
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .categories box-icon:hover {
+    transform: scale(0.9) rotate(-5deg);
+    animation: jiggle 0.5s ease-in-out infinite;
+  }
