@@ -59,7 +59,6 @@ const fetchSignup = async (formData) => {
     }
   };
 
-
   const getUser = () =>  {
     const token = localStorage.getItem('token');
     if (!token) return null;
@@ -69,7 +68,6 @@ const fetchSignup = async (formData) => {
   const signout = () => {
     localStorage.removeItem('token');
   };
-
 
   // function for fetching events 
   const fetchEvents = async () => {
@@ -93,7 +91,6 @@ const fetchSignup = async (formData) => {
       return [];
     }
   };
-
 
     const fetchOneEvent = async (eventId) => {
       try {
@@ -203,7 +200,6 @@ const fetchSignup = async (formData) => {
       }
     };
     
-  
     // Delete an event
     const deleteEvent = async (eventId) => {
       const token = localStorage.getItem('token');
@@ -223,9 +219,6 @@ const fetchSignup = async (formData) => {
         console.log(error);
       }
     };
-
-    
-
     const fetchMyEvents = async() =>{
       try {
         const token = localStorage.getItem('token');
@@ -246,6 +239,43 @@ const fetchSignup = async (formData) => {
       }
     }
 
+    const createRsvp = async(eventData, eventId) => {
+      console.log(eventData)
+      try {
+        const token = localStorage.getItem('token');
+    
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+    
+        const requestData = {
+          eventData,
+          eventId: eventId,
+        };
+    
+        console.log('-----RSVP Data------- fired', requestData);
+    
+        const response = await fetch(`${BASE_URL}/rsvp`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify(requestData),
+        });
+    
+        console.log('-----Response-------', response);
+        const data = await response.json();
+    
+        return {
+          status: response.status,
+          event: data,
+        };
+      } catch (error) {
+        console.error('Error creating RSVP:', error);
+        return { status: 500, error: error.message };
+      }
+    };    
 
     // Fetch RSVP'ed events
     const fetchRSVP = async () => {
@@ -300,7 +330,7 @@ const fetchSignup = async (formData) => {
     };
 
 
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, editEvent, getUser, signout, fetchMyEvents, fetchRSVP, fetchEventsByCategory}
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, editEvent, getUser, signout, fetchMyEvents, fetchRSVP, fetchEventsByCategory, createRsvp}
 
 
 

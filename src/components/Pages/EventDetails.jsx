@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import { fetchOneEvent, deleteEvent } from '../../services/apiServices'; // RsvpCreate
+import { fetchOneEvent, deleteEvent, createRsvp } from '../../services/apiServices'; // RsvpCreate
 import './EventForm.css';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css';
@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-const EventDetails = (props) => {
+const EventDetails = () => {
   const navigate = useNavigate();
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
@@ -33,11 +33,10 @@ const EventDetails = (props) => {
     fetchEvent();
   }, [eventId, user]);
 
-  const handleAddForm = async (formData) => {
+  const handleAddForm = async () => {
     try {
-      console.log('RSVP FormData', formData);
-      const newRsvp = await RsvpCreate(eventId, formData);
-      console.log(newRsvp)
+      console.log('RSVP FormData', rsvpFormData);
+      const newRsvp = await createRsvp(rsvpFormData, eventId);
       navigate('/rsvp')
     } catch (error) {
       console.error(error);
@@ -55,9 +54,6 @@ const EventDetails = (props) => {
     handleAddForm(rsvpFormData);
   };
 
-  console.log('event state:', event);
-  console.log('rsvpFormData:', rsvpFormData);
-
   if (error) {
     return <p>Error loading event: {error}</p>;
   }
@@ -66,15 +62,10 @@ const EventDetails = (props) => {
     return <p>Loading...</p>;
   }
 
-  // const handleDeleteEvent = async (eventId) => {
-  //   // console.log('eventId', eventId);
-  //   // call the delete function in the service file
-  //   const deletedEvent = await deleteEvent(eventId);
-  //   // filter state using deleteEvent._id
-  //   setEvent(events.filter((event) => event._id !== eventId));
-  //   navigate('/myevents');
-  // };
-
+  const handleDeleteEvent = async (eventId) => {
+    const deletedEvent = await deleteEvent(eventId);
+    navigate('/myevents');
+  };
   return (
     <main>
       <h1>{event.title}</h1>
@@ -90,7 +81,7 @@ const EventDetails = (props) => {
             <Link to={`/events/:${eventId}/edit`}>
               <Button variant="primary" size='sm' className='button'>Edit</Button>
             </Link>
-            <Button variant="danger" size='sm' className='button' onClick={() => props.handleDeleteEvent(eventId)}>Delete</Button>
+            <Button variant="danger" size='sm' className='button' onClick={() => handleDeleteEvent(eventId)}>Delete</Button>
           </>
         ) : (
           <Form onSubmit={handleSubmit}>
