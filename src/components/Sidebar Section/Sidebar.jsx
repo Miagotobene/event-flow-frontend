@@ -9,7 +9,7 @@ import { IoIosSearch } from "react-icons/io";
 import { MdOutlineRsvp } from "react-icons/md";
 
 
-const Sidebar = ({theme, setTheme}) => {
+const Sidebar = ({ theme, setTheme }) => {
   return (
     <div className='sideBar grid'>
     
@@ -21,7 +21,7 @@ const Sidebar = ({theme, setTheme}) => {
         <ul className="menuLists grid">
           {/* View dashboard */}
           <li className='listItem'>
-            <a href="/events/" className='menuLink flex'>
+            <a href="/" className='menuLink flex'>
               <IoHomeSharp className='icon' />
               <span className='smallText'>
                 Dashboard
