@@ -170,11 +170,15 @@ const fetchSignup = async (formData) => {
   
     // Delete an event
     const deleteEvent = async (eventId) => {
+      const token = localStorage.getItem('token');
+
       try {
         const res = await fetch(`${BASE_URL}/events/${eventId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+
 
           },
         });
@@ -183,6 +187,8 @@ const fetchSignup = async (formData) => {
         console.log(error);
       }
     };
+
+    
 
     const fetchMyEvents = async() =>{
       try {
