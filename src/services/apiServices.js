@@ -142,7 +142,7 @@ const fetchSignup = async (formData) => {
           throw new Error('No authorization token found');
         }
     
-        console.log('-----Event Data-------', eventData); // Log eventData to verify its structure
+        console.log('-----Event Data------- fired', eventData); // Log eventData to verify its structure
     
         const response = await fetch(`${BASE_URL}/events`, {
           method: 'POST',
@@ -166,6 +166,42 @@ const fetchSignup = async (formData) => {
         return { status: 500, error: error.message };
       }
     }
+    const editEvent = async (eventData, eventId) => {
+      try {
+        const token = localStorage.getItem('token');
+    
+        if (!token) {
+          throw new Error('No authorization token found');
+        }
+    
+        // Remove the colon from the beginning of the eventId if it exists
+        if (eventId.startsWith(':')) {
+          eventId = eventId.slice(1);
+        }
+    
+        console.log('Event ID-', eventId);
+    
+        const response = await fetch(`${BASE_URL}/events/${eventId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify(eventData),
+        });
+        console.log(response.status, response)
+    
+        const data = await response.json();
+    
+        return {
+          status: response.status,
+          event: data,
+        };
+      } catch (error) {
+        console.error('Error editing event:', error);
+        return { status: 500, error: error.message };
+      }
+    };
     
   
     // Delete an event
@@ -264,7 +300,7 @@ const fetchSignup = async (formData) => {
     };
 
 
-export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, getUser, signout, fetchMyEvents, fetchRSVP, fetchEventsByCategory}
+export {fetchLogin, fetchSignup, fetchEvents, fetchOneEvent, eventForm, deleteEvent, createEvent, editEvent, getUser, signout, fetchMyEvents, fetchRSVP, fetchEventsByCategory}
 
 
 
