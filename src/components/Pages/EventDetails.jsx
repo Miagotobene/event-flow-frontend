@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
-import { fetchOneEvent } from '../../services/apiServices'; // RsvpCreate
+import { fetchOneEvent, deleteEvent } from '../../services/apiServices'; // RsvpCreate
 import './EventForm.css';
 import { AuthedUserContext } from '../../App';
 import './eventlist.css';
@@ -65,6 +65,15 @@ const EventDetails = (props) => {
   if (!event) {
     return <p>Loading...</p>;
   }
+
+  // const handleDeleteEvent = async (eventId) => {
+  //   // console.log('eventId', eventId);
+  //   // call the delete function in the service file
+  //   const deletedEvent = await deleteEvent(eventId);
+  //   // filter state using deleteEvent._id
+  //   setEvent(events.filter((event) => event._id !== eventId));
+  //   navigate('/myevents');
+  // };
 
   return (
     <main>
