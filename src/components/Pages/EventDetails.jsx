@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
-const EventDetails = (props) => {
+const EventDetails = () => {
   const navigate = useNavigate();
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
@@ -66,15 +66,10 @@ const EventDetails = (props) => {
     return <p>Loading...</p>;
   }
 
-  // const handleDeleteEvent = async (eventId) => {
-  //   // console.log('eventId', eventId);
-  //   // call the delete function in the service file
-  //   const deletedEvent = await deleteEvent(eventId);
-  //   // filter state using deleteEvent._id
-  //   setEvent(events.filter((event) => event._id !== eventId));
-  //   navigate('/myevents');
-  // };
-
+  const handleDeleteEvent = async (eventId) => {
+    const deletedEvent = await deleteEvent(eventId);
+    navigate('/myevents');
+  };
   return (
     <main>
       <h1>{event.title}</h1>
@@ -90,7 +85,7 @@ const EventDetails = (props) => {
             <Link to={`/events/:${eventId}/edit`}>
               <Button variant="primary" size='sm' className='button'>Edit</Button>
             </Link>
-            <Button variant="danger" size='sm' className='button' onClick={() => props.handleDeleteEvent(eventId)}>Delete</Button>
+            <Button variant="danger" size='sm' className='button' onClick={() => handleDeleteEvent(eventId)}>Delete</Button>
           </>
         ) : (
           <Form onSubmit={handleSubmit}>
