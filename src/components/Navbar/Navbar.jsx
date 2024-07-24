@@ -10,8 +10,13 @@ import { AuthedUserContext } from '../../App';
 const Navbar = ({ theme, setTheme, handleSignout }) => {
   const user = useContext(AuthedUserContext);
   // function for theme : changing between light and dark mode
-  const toggle_mode = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
+  // const toggle_mode = () => {
+  //   theme === 'light' ? setTheme('dark') : setTheme('light')
+  // }
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
   }
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +48,7 @@ const Navbar = ({ theme, setTheme, handleSignout }) => {
           </>
         )}
         <li>
-          <img src={theme == 'light' ? dayIcon : nightIcon} alt="" className='toggle-icon' onClick={() => toggle_mode()} />
+          <img src={theme == 'light' ? dayIcon : nightIcon} alt="" className='toggle-icon'  onClick={switchTheme}   /> 
         </li>
       </ul>
 
@@ -54,3 +59,4 @@ const Navbar = ({ theme, setTheme, handleSignout }) => {
 
 export default Navbar;
 
+// onClick={() => toggle_mode()}

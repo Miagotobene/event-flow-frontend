@@ -10,6 +10,8 @@ import { MdOutlineRsvp } from "react-icons/md";
 
 
 const Sidebar = ({ theme, setTheme }) => {
+
+
   return (
     <div className='sideBar grid'>
     
@@ -21,7 +23,7 @@ const Sidebar = ({ theme, setTheme }) => {
         <ul className="menuLists grid">
           {/* View dashboard */}
           <li className='listItem'>
-            <a href="/" className='menuLink flex'>
+            <a href="/" className='menuLink flex' >
               <IoHomeSharp className='icon' />
               <span className='smallText'>
                 Dashboard
@@ -31,7 +33,7 @@ const Sidebar = ({ theme, setTheme }) => {
 
           {/* View all the events you created */}
           <li className='listItem'>
-            <a href="/myevents" className='menuLink flex'>
+            <a href="/myevents" className='menuLink flex' >
               <BsListStars className='icon' />
               <span className='smallText'>
                 My Events
@@ -41,7 +43,7 @@ const Sidebar = ({ theme, setTheme }) => {
 
           {/* Search Events all events */}
           <li className='listItem'>
-            <a href="/explore/events" className='menuLink flex'>
+            <a href="/explore/events" className='menuLink flex' >
               <IoIosSearch className='icon' />
               <span className='smallText'>
                 Search
