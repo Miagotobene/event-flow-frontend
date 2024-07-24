@@ -23,7 +23,9 @@ React Web App. Servring RESTful API using Node.JS and Express.
 
 ### Front End Routing
 
-- **Routes - frontend:** `js 
+- **Routes - frontend:** 
+
+```js 
 <Navbar theme={theme} setTheme={setTheme} user={user} />
      <Routes>
        {user ? (
@@ -37,7 +39,8 @@ React Web App. Servring RESTful API using Node.JS and Express.
        <Route path='/porfile' element={<body />}></Route>
        <Route path='/rsvp' element={<body />}></Route>
        <Route path='/event' element={<body />}></Route>
-     </Routes>`
+     </Routes>
+     ```
 
 - **RSVP form:** Make RSVP Form component possibly leverage event form component.
 
