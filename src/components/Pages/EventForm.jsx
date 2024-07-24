@@ -157,8 +157,10 @@ const EventForm = ({ handleAddEvent }) => {
 
           <Form.Group as={Col} controlId="formGridZip">
             <Form.Label className='label'>Time</Form.Label>
-            <TimePicker start="08:00" end="21:00" step={30} format={12} value={time} onChange={handleTimeChange} />
+            <TimePicker start="08:00" end="21:00" step={30}  format="hh:mm" value={time} onChange={handleTimeChange} />
           </Form.Group>
+
+          {/* format={12} */}
         </Row>
         <Button variant="primary" type="submit" className='button'>
           Submit

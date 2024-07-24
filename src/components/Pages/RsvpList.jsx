@@ -6,7 +6,7 @@ import './eventlist.css'
 
 
 const RsvpList = ({rsvps}) => {
-console.log(rsvps)
+// console.log(rsvps)
 
   return (
     <main>
