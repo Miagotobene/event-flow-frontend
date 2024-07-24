@@ -72,7 +72,7 @@ const EventDetails = () => {
       <div className='event-card'>
         <p>Organized by: {event.organizer?.name}</p>
         <p>Date: {new Date(event.date).toLocaleDateString()}</p>
-        <p>Time: {event.time.toLocaleTimeString()}</p>
+        <p>Time: {event.time}</p>
         <p>{event.description}</p>
         <p>{event.tags ? event.tags.map(tag => tag.name).join(', ') : 'No tags available'}</p>
 

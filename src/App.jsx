@@ -21,10 +21,6 @@ const App = () => {
 
   const [theme, setTheme] = useLocalStorage('theme' ? 'dark' : 'light')
 
- 
-
-
-
   const [user, setUser] = useState(getUser());
   const [events, setEvents] = useState([]);
   const [userEvents, setUserEvents] = useState([]);
