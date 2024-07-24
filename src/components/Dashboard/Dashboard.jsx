@@ -5,8 +5,8 @@ import Sidebar from '../Sidebar Section/Sidebar.jsx'
 import Body from './Body.jsx';
 import { useContext, useState, useEffect } from 'react';
 import { AuthedUserContext } from '../../App';
-import dayIcon from '../../assets/images/day.png';
-import nightIcon from '../../assets/images/night.png';
+// import dayIcon from '../../assets/images/day.png';
+// import nightIcon from '../../assets/images/night.png';
 
 // import { Link } from 'react-router-dom';
 const Dashboard = () => {
