@@ -12,25 +12,32 @@ Registered users of can create and coordinate events. Users can additionaly RSVP
 
 React Web App. Servring RESTful API using Node.JS and Express.
 
+## Links
+
+- https://event-flow-app.netlify.app/
+- https://trello.com/b/kFiUErc1/project3
+- https://github.com/brianjkim94/event-flow-backend
+- https://event-flow-backend.onrender.com
+
 ## Features
 
-### TBD
+### Front End Routing
 
-- **Routes - frontend:** ```js 
- <Navbar theme={theme} setTheme={setTheme} user={user} />
-      <Routes>
-        {user ? (
-          <Route path="/" element={<Dashboard user={user} />} />
-        ) : (
-          <Route path="/" element={<Home />} />
-        )}
-        <Route path='/about' element={<About />}></Route>
-        <Route path='/signup' element={<SignUp setUser={setUser} />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/porfile' element={<body />}></Route>
-        <Route path='/rsvp' element={<body />}></Route>
-        <Route path='/event' element={<body />}></Route>
-      </Routes>```
+- **Routes - frontend:** `js 
+<Navbar theme={theme} setTheme={setTheme} user={user} />
+     <Routes>
+       {user ? (
+         <Route path="/" element={<Dashboard user={user} />} />
+       ) : (
+         <Route path="/" element={<Home />} />
+       )}
+       <Route path='/about' element={<About />}></Route>
+       <Route path='/signup' element={<SignUp setUser={setUser} />}></Route>
+       <Route path='/login' element={<Login />}></Route>
+       <Route path='/porfile' element={<body />}></Route>
+       <Route path='/rsvp' element={<body />}></Route>
+       <Route path='/event' element={<body />}></Route>
+     </Routes>`
 
 - **RSVP form:** Make RSVP Form component possibly leverage event form component.
 
@@ -63,13 +70,13 @@ To set up this project locally, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone 
+   git clone
    ```
 
 2. **Navigate to the project directory:**
 
    ```bash
-   cd 
+   cd
    ```
 
 3. **Install dependencies:**
@@ -97,44 +104,62 @@ To set up this project locally, follow these steps:
    http://localhost:3000
    ```
 
-## Live Demo
-
-[Live Demo Site]()
-
 ## Code Snippets
 
 ### User Login Function
-```js 
-const fetchLogin = async(formData)=>{
-    try{
-        const res = await fetch(`${BASE_URL}/users/signin`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(formData)
-        })
-        console.log('Log-in Response status:', res.status);
-       
-        const data = await res.json()
-        console.log('Log-in Response data:', data);
-        if(data.err){
-            throw new Error(data.err)
-        }
-        if (data.token) {
-          localStorage.setItem('token', data.token); // add this line to store the JWT token in localStorage
-          const user = JSON.parse(atob(data.token.split('.')[1]));
-          return {
-            status: res.status,
-            user:user
-          }
-        }
-    }catch(error){
-        console.log(error)
-        throw error
+
+```js
+const fetchLogin = async (formData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/users/signin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    console.log('Log-in Response status:', res.status);
+
+    const data = await res.json();
+    console.log('Log-in Response data:', data);
+    if (data.err) {
+      throw new Error(data.err);
     }
-}
+    if (data.token) {
+      localStorage.setItem('token', data.token); // add this line to store the JWT token in localStorage
+      const user = JSON.parse(atob(data.token.split('.')[1]));
+      return {
+        status: res.status,
+        user: user,
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
 ```
 
-
+```js
+const eventForm = async (formData) => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('No authorization token found');
+    }
+    // check what the route in the backend is
+    const res = await fetch(`${BASE_URL}/events/new`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(formData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+```
 
 ## Inspiration
 
