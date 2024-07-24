@@ -2,7 +2,7 @@
 
 Event Flow is an experience coordination application enabling user to seamlessly RSVP to popular events in their area.
 
-[Application Page](/assets/Updated_MockUp.png)
+![Application Page](/assets/Updated_MockUp.png)
 
 ## How It Works
 
@@ -135,7 +135,6 @@ const fetchLogin = async(formData)=>{
 ```
 
 
-
 ## Inspiration
 
 - [EventBrite](https://www.eventbrite.com/)
@@ -145,8 +144,8 @@ const fetchLogin = async(formData)=>{
 
 ## Mockups
 
-![Musicfy](assets/img/firstDraft.png)
-![Event Flow ERD](assets/img/EventFlowERD.png)
+![Dashboard](assets/dashboard.png)
+![Event Flow ERD](assets/aboutpage.png)
 
 ```
 
